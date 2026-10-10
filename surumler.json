@@ -63,5 +63,10 @@
     "n": 13,
     "date": "10 Ekim 2026",
     "text": "Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."
+  },
+  {
+    "n": 14,
+    "date": "10 Ekim 2026",
+    "text": "Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."
   }
 ]

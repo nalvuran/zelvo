@@ -289,7 +289,28 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .dbar.now { background: linear-gradient(180deg, #5FD99A, #28A564); }
 @keyframes flipin { 0% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
 
-/* ---------- seviye seçici ---------- */
+/* ---------- seviye seçme penceresi ---------- */
+.lvlpick { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.lp {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left;
+  padding: 14px 16px; border-radius: 20px; color: #fff;
+  background: linear-gradient(180deg, var(--hi), var(--lo)); box-shadow: inset 0 2px 0 rgba(255,255,255,.35), 0 5px 0 var(--lip);
+}
+.lp:active { transform: translateY(3px); box-shadow: inset 0 2px 0 rgba(255,255,255,.35), 0 2px 0 var(--lip); }
+.lp.kolay { --hi: #5FD99A; --lo: #28A564; --lip: #18744A; }
+.lp.orta { --hi: #FFC76B; --lo: #E8901E; --lip: #A3600C; }
+.lp.zor { --hi: #FF8A80; --lo: #E0453B; --lip: #9A2621; }
+.lp .lpn { font-family: var(--display); font-weight: 700; font-size: 1.35rem; text-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.lp .lpd { font-weight: 700; font-size: .9rem; opacity: .95; }
+.lp .lps { position: absolute; top: 12px; right: 12px; font-size: .72rem; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--lo); }
+.lp.cur { outline: 3px solid #fff; outline-offset: 2px; }
+.lvltag-wrap { display: flex; justify-content: center; margin: 0 0 8px; }
+.lvltag { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 14px; border-radius: 999px; font-weight: 800; font-size: .85rem; color: #fff; background: rgba(255,255,255,.1); border: 1px solid var(--glass-line); }
+.lvltag::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
+.lvltag.kolay { --dot: #5FD99A; } .lvltag.orta { --dot: #FFC76B; } .lvltag.zor { --dot: #FF8A80; }
+.lvltag span { font-weight: 700; font-size: .75rem; color: var(--muted); }
+
+/* ---------- seviye seçici (eski) ---------- */
 .lvl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: rgba(0,0,0,.22); width: min(100%, 300px); margin: 2px auto 10px; }
 .lvl button { min-height: 36px; border-radius: 10px; font-weight: 800; font-size: .85rem; color: var(--muted); }
 .lvl button[aria-pressed="true"] { background: linear-gradient(180deg, #FFE38A, #F6C23E); color: #3A2600; box-shadow: 0 2px 0 #B07A06; }
@@ -508,9 +529,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":13,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."},{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."}];</script>
-<script src="content.js?v=20261010153523"></script>
+window.ZELVO_VERSION = {"n":14,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."}];</script>
+<script src="content.js?v=20261010153802"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -569,9 +590,48 @@ const store = {
   },
   set(k, v) { rawStore.set(levelKey(k), v); }
 };
+/* Oyun ekranında seviye etiketi; dokununca seviye seçme penceresi açılır */
 function levelBar(id) {
   const cur = getLevel(id);
-  return `<div class="lvl" role="group" aria-label="Zorluk seviyesi">${LEVELS.map(([k, n]) => `<button data-act="lvl" data-g="${id}" data-l="${k}" aria-pressed="${k === cur}">${n}</button>`).join("")}</div>`;
+  return `<div class="lvltag-wrap"><button class="lvltag ${cur}" data-act="pick" data-g="${id}" aria-label="Seviye: ${LVL_NAME[cur]}, değiştir">${LVL_NAME[cur]}<span>değiştir</span></button></div>`;
+}
+/* Oyun kimliği ↔ açma komutu */
+const GAME_ACT = { parola: "parola", grup: "play", mini: "mini", sudoku: "sudoku", avi: "avi", kripto: "kripto", merdiven: "merdiven", anagram: "anagram", hedef: "hedef" };
+const GAME_ID = Object.fromEntries(Object.entries(GAME_ACT).map(([id, a]) => [a, id]));
+const GAME_NAME = { parola: "Parola", grup: "Gruplanmış", mini: "Mini Çapraz", sudoku: "Sudoku", avi: "Kelime Avı", kripto: "Kriptogram", merdiven: "Merdiven", anagram: "Anagram", hedef: "Hedef Sayı" };
+const LEVEL_DESC = {
+  parola: ["4 harfli kelime", "5 harfli kelime", "6 harfli kelime"],
+  grup: ["Grup adları ipucu olarak açık", "4 hata hakkı", "3 hata hakkı, uyarı yok"],
+  mini: ["Yanlış harf görünür, harf açma var", "Tüm ipuçları", "Sadece soldan sağa ipuçları"],
+  sudoku: ["40 hazır sayı", "30 hazır sayı", "24 hazır sayı"],
+  avi: ["8×8, sadece sağa ve aşağı", "8×8, çapraz ve ters dahil", "10×10, 8 kelime, liste gizli"],
+  kripto: ["Kısa atasözü, çok harf açık", "Orta uzunlukta atasözü", "Uzun atasözü, tek harf açık"],
+  merdiven: ["3 adımda hedefe ulaş", "4 adımda hedefe ulaş", "5 adımda hedefe ulaş"],
+  anagram: ["3–6 harfli kelimeler", "4–8 harfli kelimeler", "6–9 harf, ipucu yok"],
+  hedef: ["Hedef 20–99", "Hedef 100–499", "Hedef 500–999"]
+};
+/* Bugün o seviyede oynanmış mı: kayıt anahtarı seviyeye göre ayrı */
+function levelState(id, lvl) {
+  const key = id === "grup" ? "grup-day-" + lvl : "zelvo-" + id + "-day-" + lvl;
+  let s = rawStore.get(key, null);
+  if (!s && lvl === "orta") s = rawStore.get(id === "grup" ? "grup-day" : "zelvo-" + id + "-day", null);
+  if (!s || s.no !== dayNo()) return "";
+  if (s.over) return typeof s.elapsed === "number" && s.elapsed > 0 ? "Bitti · " + fmtTime(s.elapsed) : "Bitti";
+  const started = (s.guesses && s.guesses.length) || (s.entries && s.entries.some(Boolean)) || (s.found && s.found.length) || (s.steps && s.steps.length > 1) || (s.idx > 0) || (s.log && s.log.length) || (s.vals && s.puzzle && s.vals.some((v, i) => v && !s.puzzle[i])) || (s.guess && Object.keys(s.guess).length > (s.given ? s.given.length : 0)) || s.elapsed > 0;
+  return started ? "Devam ediyor" : "";
+}
+function showLevelPicker(id) {
+  const cur = getLevel(id);
+  const m = openModal(`<h2>${esc(GAME_NAME[id])}</h2>
+    <p style="color:var(--muted);margin-top:2px">Seviyeni seç</p>
+    <div class="lvlpick">${LEVELS.map(([k, n], i) => { const st = levelState(id, k);
+      return `<button class="lp ${k}${k === cur ? " cur" : ""}" data-l="${k}">
+        <span class="lpn">${n}</span><span class="lpd">${esc(LEVEL_DESC[id][i])}</span>${st ? `<span class="lps">${esc(st)}</span>` : ""}
+      </button>`; }).join("")}</div>`);
+  m.querySelectorAll(".lp").forEach(b => b.onclick = () => {
+    setLevel(id, b.dataset.l); closeModal();
+    act(GAME_ACT[id]);
+  });
 }
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -757,7 +817,7 @@ function homeHTML() {
     <div class="gtiles">
       ${HUB.map(g => {
         const stt = g.status ? g.status() : null;
-        return `<button class="gt ${g.color}${g.act ? "" : " soon"}${stt && stt.done ? " done" : ""}" data-act="${g.act || "soon"}" data-n="${g.name}">
+        return `<button class="gt ${g.color}${g.act ? "" : " soon"}${stt && stt.done ? " done" : ""}" data-act="${g.act ? "pick" : "soon"}" data-g="${GAME_ID[g.act] || ""}" data-n="${g.name}">
           ${stt && stt.done ? `<span class="check" aria-label="Tamamlandı">${ICON.check}</span>` : ""}
           <span class="gic">${g.icon}</span>
           <b>${g.name}</b>
@@ -842,6 +902,7 @@ function act(a, el) {
   if (a === "snum") return sEnter(+el.dataset.k);
   if (a === "serase") return sErase();
   if (a === "snote") { S.noteMode = !S.noteMode; render(); return; }
+  if (a === "pick") return showLevelPicker(el.dataset.g);
   if (a === "lvl") {
     const id = el.dataset.g; if (getLevel(id) === el.dataset.l) return;
     setLevel(id, el.dataset.l); toast(LVL_NAME[el.dataset.l] + " seviye");
