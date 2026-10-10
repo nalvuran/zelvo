@@ -38,5 +38,10 @@
     "n": 8,
     "date": "10 Ekim 2026",
     "text": "Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."
+  },
+  {
+    "n": 9,
+    "date": "10 Ekim 2026",
+    "text": "iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."
   }
 ]

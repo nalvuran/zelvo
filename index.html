@@ -468,8 +468,8 @@ html { -webkit-text-size-adjust: 100%; }
 /* Sayfa kaydırılamaz; uygulama ekrana sabit. iPhone ana ekran uygulamasında alt menünün ilk açılışta yukarıda kalmasını önler */
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 html { background: #061221; }
-.app { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: var(--app-h, 100dvh); margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
-/* Alt menü uygulama kutusunun en altında (ekran yüksekliği JS ile ölçülüyor) */
+.app { position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: auto; margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+/* Alt menü uygulama kutusunun en altında */
 .tabbar { position: absolute; left: 0; right: 0; transform: none; width: auto; max-width: none; }
 .screen { -webkit-overflow-scrolling: touch; }
 [hidden] { display: none !important; }
@@ -478,24 +478,28 @@ img { max-width: 100%; }
 </head>
 <body>
 <script>
-/* iPhone ana ekran uygulaması ilk açılışta yüksekliği üst çubuk kadar eksik bildiriyor; bu yüzden yükseklik ekran boyutundan alınır */
+/* iOS 26 hatası: ana ekran uygulaması ilk açılışta pencereyi kısa açıyor ve ancak bir kaydırmadan sonra düzeltiyor.
+   Uygulama açılınca ve arka plandan dönünce bu kaydırmayı kendisi yapar. */
 (function () {
-  function fit() {
-    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    const standalone = navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
-    const portrait = window.innerHeight >= window.innerWidth;
-    const h = ios && standalone ? (portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height)) : window.innerHeight;
-    document.documentElement.style.setProperty("--app-h", h + "px");
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const standalone = navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  if (!ios || !standalone) return;
+  function nudge() {
+    const de = document.documentElement, body = document.body;
+    if (!body) return;
+    de.style.overflow = "auto"; body.style.overflow = "auto"; body.style.minHeight = "calc(100% + 3px)";
+    window.scrollTo(0, 3);
+    setTimeout(() => { window.scrollTo(0, 0); de.style.overflow = ""; body.style.overflow = ""; body.style.minHeight = ""; }, 60);
   }
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("orientationchange", () => setTimeout(fit, 300));
+  window.addEventListener("load", () => { nudge(); setTimeout(nudge, 400); });
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") setTimeout(nudge, 50); });
+  window.addEventListener("orientationchange", () => setTimeout(nudge, 300));
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":8,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."},{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."},{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."}];</script>
-<script src="content.js?v=20261010151553"></script>
+window.ZELVO_VERSION = {"n":9,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."},{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."},{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."},{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."}];</script>
+<script src="content.js?v=20261010151837"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
