@@ -472,9 +472,9 @@ img { max-width: 100%; }
 </head>
 <body>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":4,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},{"n":1,"date":"10 Ekim 2026","text":"İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."}];</script>
-<script src="content.js?v=20261010135434"></script>
+window.ZELVO_VERSION = {"n":5,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},{"n":1,"date":"10 Ekim 2026","text":"İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."}];</script>
+<script src="content.js?v=20261010135656"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -642,6 +642,10 @@ function showProfile() {
     <p class="vline">${esc(versionLine())}</p>`);
   const b = document.getElementById("logoutBtn"); if (b) b.onclick = () => act("logout", b);
 }
+/* Yeni sürüm: ana sayfadayken hemen yenilenir; oyun ortasındaysa ana sayfaya dönünce yenilenir */
+let UPDATE_RELOAD = null;
+window.zelvoCanReload = () => (screen === "home" || screen === "login" || screen === "boot") && overlay.hidden;
+window.zelvoUpdateReady = (n, reload) => { UPDATE_RELOAD = reload; toast("Sürüm " + n + " hazır; ana sayfaya dönünce yüklenecek", 3500); };
 window.zelvoOnAuth = user => {
   USER = user;
   if (!user) { screen = "login"; closeModal(); }
@@ -815,7 +819,7 @@ function act(a, el) {
   if (a === "hreset") { if (H.history.length) { H.history = []; H.tiles = H.start.map((v, i) => ({ v, id: i })); H.sel = null; H.op = null; H.log = []; hSave(); render(); } return; }
   if (a === "play") { G = loadDaily(); screen = "game"; render(); if (!store.get("grup-seen", false)) { store.set("grup-seen", true); showHelp(); } else if (G.over) showResult(); return; }
   if (a === "free") { G = newGame("free"); screen = "game"; render(); return; }
-  if (a === "home") { screen = "home"; render(); return; }
+  if (a === "home") { if (UPDATE_RELOAD) return UPDATE_RELOAD(); screen = "home"; render(); return; }
   if (a === "help") return showHelp();
   if (a === "stats") return showStats();
   if (a === "result") return showResult();
@@ -1914,7 +1918,23 @@ onAuthStateChanged(auth, async user => {
 });
 </script>
 <script>
-if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+/* Yeni sürüm kontrolü: uygulama açılınca ve arka plandan dönünce version.json okunur; daha yeni sürüm varsa sayfa yenilenir */
+(function () {
+  let reg = null, pending = false;
+  if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").then(r => { reg = r; }).catch(() => {}));
+  const reload = () => { if (reg) reg.update().catch(() => {}); location.reload(); };
+  async function check() {
+    try {
+      const r = await fetch("version.json?t=" + Date.now(), { cache: "no-store" });
+      const v = await r.json();
+      if (!(window.ZELVO_VERSION && v.n > window.ZELVO_VERSION.n)) return;
+      if (window.zelvoCanReload && window.zelvoCanReload()) reload();
+      else if (!pending) { pending = true; window.zelvoUpdateReady && window.zelvoUpdateReady(v.n, reload); }
+    } catch (e) {}
+  }
+  window.addEventListener("load", () => setTimeout(check, 1500));
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") check(); });
+})();
 </script>
 </body>
 </html>
