@@ -43,5 +43,10 @@
     "n": 9,
     "date": "10 Ekim 2026",
     "text": "iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."
+  },
+  {
+    "n": 10,
+    "date": "10 Ekim 2026",
+    "text": "iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."
   }
 ]
