@@ -68,5 +68,10 @@
     "n": 14,
     "date": "10 Ekim 2026",
     "text": "Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."
+  },
+  {
+    "n": 15,
+    "date": "10 Ekim 2026",
+    "text": "Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."
   }
 ]

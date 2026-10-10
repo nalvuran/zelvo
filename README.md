@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 15 | 10 Ekim 2026 | Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var. |
 | 14 | 10 Ekim 2026 | Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir. |
 | 13 | 10 Ekim 2026 | Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi. |
 | 12 | 10 Ekim 2026 | Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor. |

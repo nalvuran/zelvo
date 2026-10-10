@@ -172,6 +172,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .gt.red { --hi: #FF8A8A; --lo: #D9434B; --lip: #9A2730; }
 .gt.indigo { --hi: #8E9BFF; --lo: #4C5BD6; --lip: #323D9C; }
 .gt.lime { --hi: #BFE36A; --lo: #7FAE2A; --lip: #5A7D1A; }
+.gt.gold { --hi: #FFD866; --lo: #DFA11A; --lip: #966A06; }
+.gt.cyan { --hi: #6AD8F5; --lo: #1F9BC4; --lip: #146C8A; }
+.gt.plum { --hi: #E594EC; --lo: #AE4BBE; --lip: #772C84; }
 .screen { overflow-y: auto; }
 @media (max-height: 700px) { .gt { min-height: 98px; } .gt .gic { width: 40px; height: 40px; } .progress { margin: 12px 2px 10px; } }
 
@@ -456,6 +459,55 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .hop.on { background: linear-gradient(180deg, #FFE38A, #F6C23E); color: #3A2600; box-shadow: 0 4px 0 #B07A06; }
 .hlog { text-align: center; color: var(--muted); font-weight: 700; font-size: .88rem; min-height: 1.3em; font-variant-numeric: tabular-nums; }
 
+/* ---------- türet ---------- */
+.tulist { display: flex; flex-direction: column; gap: 8px; align-items: center; overflow-y: auto; max-height: 40vh; padding: 2px 0; }
+.turow { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.tuw { display: inline-flex; gap: 2px; }
+.tuw i { width: 22px; height: 26px; border-radius: 6px; display: grid; place-items: center; font-style: normal; font-family: var(--display); font-weight: 700; font-size: .95rem; background: rgba(255,255,255,.1); border: 1px solid var(--glass-line); color: #fff; }
+.tuw.f i { background: linear-gradient(180deg, #FFD866, #DFA11A); color: #3A2600; border-color: transparent; }
+.tucur { min-height: 44px; text-align: center; font-family: var(--display); font-weight: 700; font-size: 1.9rem; letter-spacing: .12em; color: #fff; }
+.tucur.shake { animation: shake .4s; }
+.tutiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin: 8px 0 14px; }
+.tut { width: 48px; height: 54px; border-radius: 14px; font-family: var(--display); font-weight: 700; font-size: 1.6rem; color: #3A2600; background: linear-gradient(180deg, #FFE38A, #F2B01E); box-shadow: inset 0 2px 0 rgba(255,255,255,.45), 0 4px 0 #B07A06; }
+.tut.used { opacity: .25; }
+.tutools { display: grid; grid-template-columns: 1fr 1fr 1fr 2fr; gap: 8px; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+.tutools .pill { display: grid; place-items: center; }
+.tutools .pill svg { width: 22px; height: 22px; }
+
+/* ---------- sözlük ---------- */
+.szwrap { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.szb { text-align: center; padding: 10px; border-radius: 16px; background: var(--glass); border: 1px solid var(--glass-line); }
+.szb small { display: block; font-size: .7rem; font-weight: 800; letter-spacing: .1em; color: var(--muted); margin-bottom: 6px; }
+.szw { display: flex; justify-content: center; gap: 4px; min-height: 34px; }
+.szw i { width: 30px; height: 34px; border-radius: 8px; display: grid; place-items: center; font-style: normal; font-family: var(--display); font-weight: 700; font-size: 1.2rem; background: rgba(255,255,255,.12); color: #fff; }
+.szw i.pre { background: linear-gradient(180deg, #FFE38A, #F2B01E); color: #3A2600; }
+.szempty { font-family: var(--display); font-weight: 700; font-size: 1.3rem; color: var(--muted); }
+.szbar { position: relative; height: 14px; border-radius: 999px; background: linear-gradient(90deg, #5FD99A, #F6C23E, #FF7A59, #A47AF0); opacity: .35; margin: 0 6px; }
+.szbar { opacity: 1; background: rgba(255,255,255,.08); }
+.szrange { position: absolute; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, #5FD99A, #F6C23E); }
+.szbar b { position: absolute; top: -4px; width: 4px; height: 22px; margin-left: -2px; border-radius: 2px; background: #fff; }
+.szbar span { position: absolute; top: 18px; font-size: .7rem; font-weight: 800; color: var(--muted); }
+.szbar .a { left: 0; } .szbar .z { right: 0; }
+.szslots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.szslots i { width: 46px; height: 52px; border-radius: 12px; display: grid; place-items: center; font-style: normal; font-family: var(--display); font-weight: 700; font-size: 1.6rem; border: 2px solid rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.08); }
+.szslots.done i { background: linear-gradient(180deg, #5FD99A, #28A564); border-color: transparent; }
+.szlast { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; min-height: 30px; }
+.szlast .chip { font-size: .75rem; padding: 5px 10px; }
+
+/* ---------- takas ---------- */
+.tkwrap { display: grid; place-items: center; margin-top: 6px; }
+.tkgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; width: min(100%, 330px); aspect-ratio: 1; }
+.tk { border-radius: 14px; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 7vw, 1.9rem); color: #fff; }
+.tk.hole { background: none; }
+.tk.g { background: linear-gradient(180deg, #5FD99A, #28A564); box-shadow: inset 0 2px 0 rgba(255,255,255,.35), 0 4px 0 #18744A; }
+.tk.y { background: linear-gradient(180deg, #FFD966, #F2B01E); color: #3A2600; box-shadow: inset 0 2px 0 rgba(255,255,255,.4), 0 4px 0 #B07A06; }
+.tk.n { background: linear-gradient(180deg, #4B6180, #384B66); box-shadow: inset 0 2px 0 rgba(255,255,255,.2), 0 4px 0 #24344A; }
+.tk.sel { outline: 3px solid #fff; outline-offset: 2px; transform: translateY(-3px); }
+.tklegend { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; font-size: .8rem; font-weight: 700; color: var(--muted); padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+.tklegend span { display: inline-flex; align-items: center; gap: 6px; }
+.tklegend i { width: 14px; height: 14px; border-radius: 4px; }
+.tklegend i.g { background: #3FBF7F; } .tklegend i.y { background: #F6C23E; } .tklegend i.n { background: #435873; }
+
 /* ---------- modal & toast ---------- */
 .overlay { position: fixed; inset: 0; background: rgba(3,10,20,.6); display: grid; place-items: center; padding: 16px; z-index: 20; }
 .modal {
@@ -529,9 +581,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":14,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."}];</script>
-<script src="content.js?v=20261010153802"></script>
+window.ZELVO_VERSION = {"n":15,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."}];</script>
+<script src="content.js?v=20261010154725"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -596,9 +648,9 @@ function levelBar(id) {
   return `<div class="lvltag-wrap"><button class="lvltag ${cur}" data-act="pick" data-g="${id}" aria-label="Seviye: ${LVL_NAME[cur]}, değiştir">${LVL_NAME[cur]}<span>değiştir</span></button></div>`;
 }
 /* Oyun kimliği ↔ açma komutu */
-const GAME_ACT = { parola: "parola", grup: "play", mini: "mini", sudoku: "sudoku", avi: "avi", kripto: "kripto", merdiven: "merdiven", anagram: "anagram", hedef: "hedef" };
+const GAME_ACT = { parola: "parola", grup: "play", mini: "mini", sudoku: "sudoku", avi: "avi", kripto: "kripto", merdiven: "merdiven", anagram: "anagram", hedef: "hedef", turet: "turet", sozluk: "sozluk", takas: "takas" };
 const GAME_ID = Object.fromEntries(Object.entries(GAME_ACT).map(([id, a]) => [a, id]));
-const GAME_NAME = { parola: "Parola", grup: "Gruplanmış", mini: "Mini Çapraz", sudoku: "Sudoku", avi: "Kelime Avı", kripto: "Kriptogram", merdiven: "Merdiven", anagram: "Anagram", hedef: "Hedef Sayı" };
+const GAME_NAME = { parola: "Parola", grup: "Gruplanmış", mini: "Mini Çapraz", sudoku: "Sudoku", avi: "Kelime Avı", kripto: "Kriptogram", merdiven: "Merdiven", anagram: "Anagram", hedef: "Hedef Sayı", turet: "Türet", sozluk: "Sözlük", takas: "Takas" };
 const LEVEL_DESC = {
   parola: ["4 harfli kelime", "5 harfli kelime", "6 harfli kelime"],
   grup: ["Grup adları ipucu olarak açık", "4 hata hakkı", "3 hata hakkı, uyarı yok"],
@@ -608,7 +660,10 @@ const LEVEL_DESC = {
   kripto: ["Kısa atasözü, çok harf açık", "Orta uzunlukta atasözü", "Uzun atasözü, tek harf açık"],
   merdiven: ["3 adımda hedefe ulaş", "4 adımda hedefe ulaş", "5 adımda hedefe ulaş"],
   anagram: ["3–6 harfli kelimeler", "4–8 harfli kelimeler", "6–9 harf, ipucu yok"],
-  hedef: ["Hedef 20–99", "Hedef 100–499", "Hedef 500–999"]
+  hedef: ["Hedef 20–99", "Hedef 100–499", "Hedef 500–999"],
+  turet: ["5 harften kelimeler", "6 harften kelimeler", "7 harften kelimeler, ipucu yok"],
+  sozluk: ["4 harfli gizli kelime", "5 harfli gizli kelime", "6 harfli gizli kelime"],
+  takas: ["Az karışık, 16 takas hakkı", "15 takas hakkı", "12 takas hakkı"]
 };
 /* Bugün o seviyede oynanmış mı: kayıt anahtarı seviyeye göre ayrı */
 function levelState(id, lvl) {
@@ -664,6 +719,10 @@ const ICON = {
   merdiven: I('<path d="M7 3v18M17 3v18M7 7.5h10M7 12h10M7 16.5h10"/>'),
   anagram: I('<path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>'),
   hedef: I('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
+  turet: I('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="7.5" r="1.6"/><circle cx="8" cy="14.5" r="1.6"/><circle cx="16" cy="14.5" r="1.6"/>'),
+  sozluk: I('<path d="M3 5.5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0z"/><path d="M21 5.5c-3-1.5-6-1.5-9 0v14c3-1.5 6-1.5 9 0z"/>'),
+  takas: I('<path d="M7 4L3 8l4 4"/><path d="M3 8h13"/><path d="M17 20l4-4-4-4"/><path d="M21 16H8"/>'),
+  hint: I('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/>'),
   backspace: I('<path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/>')
 };
 
@@ -699,7 +758,7 @@ function saveDaily() {
 /* ---------- render ---------- */
 const app = document.getElementById("app");
 function render() {
-  const views = { boot: bootHTML, login: loginHTML, home: homeHTML, parola: parolaHTML, mini: miniHTML, sudoku: sudokuHTML, avi: wsHTML, kripto: kHTML, merdiven: lHTML, anagram: anHTML, hedef: hHTML };
+  const views = { boot: bootHTML, login: loginHTML, home: homeHTML, parola: parolaHTML, mini: miniHTML, sudoku: sudokuHTML, avi: wsHTML, kripto: kHTML, merdiven: lHTML, anagram: anHTML, hedef: hHTML, turet: tuHTML, sozluk: szHTML, takas: tkHTML };
   app.innerHTML = (views[screen] || gameHTML)();
   bind();
   if (screen === "avi") wsBindDrag();
@@ -794,7 +853,10 @@ function homeHTML() {
     { name: "Kriptogram", color: "pink", icon: ICON.kripto, act: "kripto", status: () => timedStatus("kripto", "Oyna") },
     { name: "Merdiven", color: "red", icon: ICON.merdiven, act: "merdiven", status: () => timedStatus("merdiven", "Oyna") },
     { name: "Anagram", color: "indigo", icon: ICON.anagram, act: "anagram", status: () => timedStatus("anagram", "Oyna") },
-    { name: "Hedef Sayı", color: "lime", icon: ICON.hedef, act: "hedef", status: () => timedStatus("hedef", "Oyna") }
+    { name: "Hedef Sayı", color: "lime", icon: ICON.hedef, act: "hedef", status: () => timedStatus("hedef", "Oyna") },
+    { name: "Türet", color: "gold", icon: ICON.turet, act: "turet", status: () => timedStatus("turet") },
+    { name: "Sözlük", color: "cyan", icon: ICON.sozluk, act: "sozluk", status: () => timedStatus("sozluk") },
+    { name: "Takas", color: "plum", icon: ICON.takas, act: "takas", status: () => timedStatus("takas") }
   ];
   const liveCount = HUB.filter(g => g.act).length;
   const doneCount = HUB.filter(g => g.status && g.status().done).length;
@@ -924,6 +986,13 @@ function act(a, el) {
   if (a === "anshuf") { AN.scr[AN.idx] = shuffle(AN.scr[AN.idx]); AN.picked = AN.picked.slice(0, AN.lock); anRelock(); render(); return; }
   if (a === "anclear") { AN.picked = AN.picked.slice(0, AN.lock); render(); return; }
   if (a === "htile") return hTile(+el.dataset.i);
+  if (a === "tutile") return tuTile(+el.dataset.i);
+  if (a === "tusend") return tuSend();
+  if (a === "tuback") { TU.cur.pop(); return render(); }
+  if (a === "tushuf") { TU.cur = []; TU.letters = shuffle(TU.letters); return render(); }
+  if (a === "tuhint") return tuHint();
+  if (a === "szkey") return szPress(el.dataset.k);
+  if (a === "tkcell") return tkTap(+el.dataset.i);
   if (a === "hop") { if (H.sel === null) return toast("Önce bir sayı seç"); H.op = H.op === el.dataset.k ? null : el.dataset.k; render(); return; }
   if (a === "hundo") return hUndo();
   if (a === "hreset") { if (H.history.length) { H.history = []; H.tiles = H.start.map((v, i) => ({ v, id: i })); H.sel = null; H.op = null; H.log = []; hSave(); render(); } return; }
@@ -1224,7 +1293,7 @@ document.addEventListener("keydown", e => {
     else if (e.key.startsWith("Arrow") && S.sel >= 0) { e.preventDefault(); const d = { ArrowUp: -9, ArrowDown: 9, ArrowLeft: -1, ArrowRight: 1 }[e.key]; const n = S.sel + d; if (n >= 0 && n < 81) { S.sel = n; render(); } }
     return;
   }
-  const press = { parola: pPress, mini: mPress, kripto: kPress, merdiven: lPress, anagram: anType }[screen] || null;
+  const press = { parola: pPress, mini: mPress, kripto: kPress, merdiven: lPress, anagram: anType, turet: tuType, sozluk: szPress }[screen] || null;
   if (!press) return;
   if (e.key === "Enter") { e.preventDefault(); press("enter"); }
   else if (e.key === "Backspace") press("back");
@@ -1575,7 +1644,7 @@ function defineGame(id, name, o) {
   };
   G.result = () => {
     const g = o.get();
-    timeResult({ title: "Tebrikler!", line: o.line(g), daily: g.mode === "daily", name, key: "zelvo-" + id + "-stats", again: id + "-free",
+    timeResult({ title: g.won === false ? "Bu sefer olmadı" : "Tebrikler!", line: o.line(g), daily: g.mode === "daily", name, key: "zelvo-" + id + "-stats", again: id + "-free",
       share: `Zelvo ${name} ${g.mode === "daily" ? "#" + g.no : "(serbest)"} · ${LVL_NAME[g.lvl] || "Orta"}\n⏱ ${fmtTime(g.elapsed)}${o.shareExtra ? o.shareExtra(g) : ""}` });
   };
   GAMES[id] = G;
@@ -1985,6 +2054,203 @@ defineGame("hedef", "Hedef Sayı", {
     <p>Altı sayıyı dört işlemle birleştirerek <b>hedef sayıya</b> ulaş.</p>
     <p>Bir sayıya dokun, bir işlem seç, sonra ikinci sayıya dokun. İki sayı birleşip sonucu olur; sonucu yeni işlemlerde kullanabilirsin.</p>
     <p>Her sayıyı en fazla bir kez kullanabilirsin; hepsini kullanmak zorunda değilsin. Bölme tam sayı vermeli, çıkarma pozitif kalmalı.</p>`)
+});
+
+/* ================= TÜRET (verilen harflerden kelime türet) ================= */
+const TURET = ZD.turet;
+const D3SET = new Set(ZD.d3), D7SET = new Set(ZD.d7);
+function anyWord(w) { return w.length === 3 ? D3SET.has(w) : w.length === 4 ? D4SET.has(w) : w.length === 5 ? VALID.has(w) : w.length === 6 ? D6SET.has(w) : w.length === 7 ? D7SET.has(w) : false; }
+let TU = null;
+/* Seviyeler: Kolay 5 harf, Orta 6 harf, Zor 7 harf ve ipucu yok */
+function tuMake(mode) {
+  const lvl = getLevel("turet"), list = TURET[{ kolay: "5", orta: "6", zor: "7" }[lvl]], no = dayNo();
+  const idx = mode === "daily" ? (no - 1 + LVL_IDX[lvl] * 7) % list.length : Math.floor(Math.random() * list.length);
+  const root = list[idx][0], req = list[idx][1];
+  return { mode, no, lvl, sig: lvl + root, root, req, letters: shuffleR([...root], seeded(no * 97 + LVL_IDX[lvl] + (mode === "daily" ? 0 : Date.now()))), found: [], bonus: [], cur: [], hints: 0, revealed: {}, elapsed: 0, over: false };
+}
+function tuHTML() {
+  const byLen = {}; TU.req.forEach(w => (byLen[w.length] = byLen[w.length] || []).push(w));
+  const lists = Object.keys(byLen).sort().map(n => `<div class="turow">${byLen[n].map(w => {
+    const f = TU.found.includes(w) || TU.over, rv = TU.revealed[w] || 0;
+    return `<span class="tuw${f ? " f" : ""}">${[...w].map((ch, i) => `<i>${f || i < rv ? up(ch) : ""}</i>`).join("")}</span>`;
+  }).join("")}</div>`).join("");
+  const word = TU.cur.map(i => up(TU.letters[i])).join("");
+  const tiles = TU.letters.map((ch, i) => `<button class="tut${TU.cur.includes(i) ? " used" : ""}" data-act="tutile" data-i="${i}">${up(ch)}</button>`).join("");
+  return `<div class="screen">${gameHead("turet", "Türet", TU, `${TU.found.length}/${TU.req.length} kelime${TU.bonus.length ? " · " + TU.bonus.length + " bonus" : ""}`)}
+    <div class="tulist">${lists}</div>
+    <div class="spacer"></div>
+    ${TU.over ? overBar("turet") : `
+    <div class="tucur" id="tucur">${word || "&nbsp;"}</div>
+    <div class="tutiles">${tiles}</div>
+    <div class="tutools">
+      <button class="pill" data-act="tuhint" ${TU.lvl === "zor" ? "disabled" : ""} aria-label="İpucu">${ICON.hint}</button>
+      <button class="pill" data-act="tushuf" aria-label="Karıştır">${ICON.anagram}</button>
+      <button class="pill" data-act="tuback" aria-label="Sil">${ICON.backspace}</button>
+      <button class="pill go" data-act="tusend">Gönder</button>
+    </div>`}
+  </div>`;
+}
+function tuTile(i) { if (TU.over || TU.cur.includes(i)) return; TU.cur.push(i); render(); }
+function tuSend() {
+  if (TU.over) return;
+  const w = TU.cur.map(i => TU.letters[i]).join(""); TU.cur = [];
+  if (w.length < 3) { render(); return toast("En az 3 harf"); }
+  if (TU.req.includes(w)) {
+    if (TU.found.includes(w)) { render(); return toast("Bunu zaten buldun"); }
+    TU.found.push(w);
+    if (TU.found.length === TU.req.length) return GAMES.turet.win();
+    toast(up(w) + " ✓"); GAMES.turet.save(); return render();
+  }
+  if (anyWord(w)) {
+    if (TU.bonus.includes(w)) { render(); return toast("Bunu zaten buldun"); }
+    TU.bonus.push(w); toast("Bonus kelime: " + up(w)); GAMES.turet.save(); return render();
+  }
+  render(); toast("Bu kelime sözlükte yok");
+  const el = document.getElementById("tucur"); if (el) { el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+}
+function tuHint() {
+  if (TU.over) return; if (TU.lvl === "zor") return toast("Zor seviyede ipucu yok");
+  const w = TU.req.find(x => !TU.found.includes(x) && (TU.revealed[x] || 0) < x.length - 1);
+  if (!w) return toast("Son harfleri sen bul!");
+  TU.revealed[w] = (TU.revealed[w] || 0) + 1; TU.hints++; GAMES.turet.save(); render();
+}
+function tuType(k) {
+  if (!TU || TU.over) return;
+  if (k === "enter") return tuSend();
+  if (k === "back") { TU.cur.pop(); return render(); }
+  const i = TU.letters.findIndex((ch, x) => ch === k && !TU.cur.includes(x));
+  if (i >= 0) tuTile(i);
+}
+defineGame("turet", "Türet", {
+  make: tuMake, get: () => TU, set: g => { TU = g; },
+  line: g => `"${up(g.root)}" harflerinden ${g.req.length} kelimeyi <b>${fmtTime(g.elapsed)}</b> sürede buldun${g.bonus.length ? `, ${g.bonus.length} bonus kelime` : ""}${g.hints ? ` (${g.hints} ipucu)` : ""}.`,
+  shareExtra: g => ` · ${g.req.length} kelime${g.bonus.length ? " · +" + g.bonus.length + " bonus" : ""}`,
+  help: () => openModal(`<h2>Nasıl oynanır</h2>
+    <p>Verilen harflerden <b>en az 3 harfli</b> kelimeler türet. Her harfi bir kelimede bir kez kullanabilirsin.</p>
+    <p>Üstteki kutular bulman gereken kelimeler; hepsini bulunca bulmaca biter. Listede olmayan ama sözlükte olan kelimeler <b>bonus</b> sayılır.</p>
+    <p>Harflere dokunarak kelimeyi kur, <b>Gönder</b>'e bas. Takılırsan ampul bir harf açar (Zor seviyede yok).</p>`)
+});
+
+/* ================= SÖZLÜK (gizli kelimenin sözlükteki yerini daralt) ================= */
+const TR_ORDER = {}; [...TR_ALPHA].forEach((ch, i) => TR_ORDER[ch] = i);
+function trCmp(a, b) { for (let i = 0; i < Math.min(a.length, b.length); i++) { const d = TR_ORDER[a[i]] - TR_ORDER[b[i]]; if (d) return d; } return a.length - b.length; }
+function trPos(w) { let p = 0, f = 1; for (const ch of w) { f /= 29; p += TR_ORDER[ch] * f; } return p + f / 2; }
+let SZ = null;
+/* Seviyeler: Kolay 4 harf, Orta 5 harf, Zor 6 harf */
+function szMake(mode) {
+  const lvl = getLevel("sozluk"), list = pLists(lvl), no = dayNo();
+  const order = shuffleR(list, seeded(lvl === "kolay" ? 7071 : lvl === "zor" ? 9091 : 8081));
+  const secret = mode === "daily" ? order[(no - 1) % order.length] : list[Math.floor(Math.random() * list.length)];
+  return { mode, no, lvl, sig: lvl + secret, len: secret.length, secret, guesses: [], lo: "", hi: "", current: "", elapsed: 0, over: false };
+}
+function szHTML() {
+  const pos = w => (trPos(w) * 100).toFixed(2) + "%";
+  const lo = SZ.lo, hi = SZ.hi, left = lo ? trPos(lo) * 100 : 0, right = hi ? trPos(hi) * 100 : 100;
+  const pre = (() => { if (!lo || !hi) return 0; let i = 0; while (i < lo.length && lo[i] === hi[i]) i++; return i; })();
+  const show = (w, empty) => w ? `${[...w].map((ch, i) => `<i class="${i < pre ? "pre" : ""}">${up(ch)}</i>`).join("")}` : `<span class="szempty">${empty}</span>`;
+  const slots = [...Array(SZ.len)].map((_, i) => `<i>${SZ.over ? up(SZ.secret[i]) : SZ.current[i] ? up(SZ.current[i]) : ""}</i>`).join("");
+  const last = SZ.guesses.slice(-3).reverse().map(g => `<span class="chip">${up(g)} ${trCmp(g, SZ.secret) < 0 ? "→ sonra" : trCmp(g, SZ.secret) > 0 ? "← önce" : "✓"}</span>`).join("");
+  return `<div class="screen">${gameHead("sozluk", "Sözlük", SZ, `${SZ.guesses.length} tahmin`)}
+    <div class="szwrap">
+      <div class="szb lo"><small>BUNDAN SONRA GELİR</small><div class="szw">${show(lo, "A")}</div></div>
+      <div class="szbar" aria-hidden="true"><div class="szrange" style="left:${left}%;width:${Math.max(0.6, right - left)}%"></div>${lo ? `<b style="left:${pos(lo)}"></b>` : ""}${hi ? `<b style="left:${pos(hi)}"></b>` : ""}<span class="a">A</span><span class="z">Z</span></div>
+      <div class="szslots${SZ.over ? " done" : ""}">${slots}</div>
+      <div class="szbar-spacer"></div>
+      <div class="szb hi"><small>BUNDAN ÖNCE GELİR</small><div class="szw">${show(hi, "Z")}</div></div>
+      <div class="szlast">${last}</div>
+    </div>
+    ${SZ.over ? overBar("sozluk") : keyboardHTML("szkey", "GİR")}
+  </div>`;
+}
+function szPress(k) {
+  if (!SZ || SZ.over) return;
+  if (k === "back") { SZ.current = SZ.current.slice(0, -1); return render(); }
+  if (k !== "enter") { if (TR_ALPHA.includes(k) && SZ.current.length < SZ.len) { SZ.current += k; render(); } return; }
+  const w = SZ.current;
+  if (w.length < SZ.len) return toast("Kelime " + SZ.len + " harfli olmalı");
+  if (!pValid(w)) return toast("Bu kelime sözlükte yok");
+  if (SZ.guesses.includes(w)) return toast("Bunu zaten denedin");
+  SZ.guesses.push(w); SZ.current = "";
+  if (w === SZ.secret) return GAMES.sozluk.win();
+  if (trCmp(w, SZ.secret) < 0) { if (!SZ.lo || trCmp(w, SZ.lo) > 0) SZ.lo = w; toast("Gizli kelime " + up(w) + " kelimesinden SONRA gelir"); }
+  else { if (!SZ.hi || trCmp(w, SZ.hi) < 0) SZ.hi = w; toast("Gizli kelime " + up(w) + " kelimesinden ÖNCE gelir"); }
+  GAMES.sozluk.save(); render();
+}
+defineGame("sozluk", "Sözlük", {
+  make: szMake, get: () => SZ, set: g => { SZ = g; },
+  line: g => `Gizli kelime <b>${up(g.secret)}</b> idi; <b>${g.guesses.length} tahminde</b>, ${fmtTime(g.elapsed)} sürede buldun.`,
+  shareExtra: g => ` · ${g.guesses.length} tahmin`,
+  help: () => openModal(`<h2>Nasıl oynanır</h2>
+    <p>Gizli bir kelime var. Bir kelime tahmin et; gizli kelimenin sözlükte senin tahmininden <b>önce</b> mi <b>sonra</b> mı geldiğini söyleriz.</p>
+    <p>Üst ve alt kutular aralığı gösterir; her tahminle aralık daralır. İki sınırın ortak başlangıç harfleri sarı yanar: gizli kelime de onlarla başlar.</p>
+    <p>Kolay 4, Orta 5, Zor 6 harfli. Ne kadar az tahminde bulursan o kadar iyi!</p>`)
+});
+
+/* ================= TAKAS (harfleri yer değiştirerek kesişen kelimeleri tamamla) ================= */
+const WAFFLES = ZD.waffles;
+const TK_CELLS = [...Array(25).keys()].filter(i => Math.floor(i / 5) % 2 === 0 || (i % 5) % 2 === 0);
+const TK_LINES = [0, 2, 4].map(r => [0,1,2,3,4].map(c => r * 5 + c)).concat([0, 2, 4].map(c => [0,1,2,3,4].map(r => r * 5 + c)));
+let TK = null;
+/* Seviyeler: karıştırma ve takas hakkı — Kolay 7 karışık / 16 hak, Orta 10 / 15, Zor 10 / 12 (21 harfle en fazla 10 takas karıştırılabilir) */
+function tkMake(mode) {
+  const lvl = getLevel("takas"), no = dayNo(), r = seeded(mode === "daily" ? no * 233 + LVL_IDX[lvl] * 17 : Math.floor(Math.random() * 1e9));
+  const idx = mode === "daily" ? (no - 1 + LVL_IDX[lvl] * 5) % WAFFLES.length : Math.floor(r() * WAFFLES.length);
+  const [r0, r2, r4] = WAFFLES[idx], sol = Array(25).fill("");
+  [r0, r2, r4].forEach((w, k) => [...w].forEach((ch, c) => sol[k * 10 + c] = ch));
+  const words = WAFFLES[idx];
+  [3, 4, 5].forEach(k => [...words[k]].forEach((ch, rr) => sol[rr * 5 + (k - 3) * 2] = ch));
+  const { mix, swaps } = { kolay: { mix: 7, swaps: 16 }, orta: { mix: 10, swaps: 15 }, zor: { mix: 10, swaps: 12 } }[lvl];
+  let cur;
+  for (;;) {
+    cur = sol.slice(); const used = new Set(); let done = 0, guard = 0;
+    while (done < mix && guard++ < 2000) {
+      const a = TK_CELLS[Math.floor(r() * TK_CELLS.length)], b = TK_CELLS[Math.floor(r() * TK_CELLS.length)];
+      if (a === b || used.has(a) || used.has(b) || cur[a] === cur[b] || cur[a] !== sol[a] || cur[b] !== sol[b]) continue;
+      [cur[a], cur[b]] = [cur[b], cur[a]]; used.add(a); used.add(b); done++;
+    }
+    if (done === mix) break;
+  }
+  return { mode, no, lvl, sig: lvl + idx, sol, cur, left: swaps, total: swaps, sel: -1, elapsed: 0, over: false, won: false };
+}
+function tkColors() {
+  const col = Array(25).fill("");
+  TK_CELLS.forEach(i => { if (TK.cur[i] === TK.sol[i]) col[i] = "g"; });
+  for (const line of TK_LINES) {
+    const need = {}; line.forEach(i => { if (col[i] !== "g") need[TK.sol[i]] = (need[TK.sol[i]] || 0) + 1; });
+    line.forEach(i => { if (col[i] !== "g" && need[TK.cur[i]] > 0) { col[i] = "y"; need[TK.cur[i]]--; } });
+  }
+  return col;
+}
+function tkHTML() {
+  const col = tkColors();
+  const cells = [...Array(25).keys()].map(i => TK_CELLS.includes(i)
+    ? `<button class="tk ${TK.over && TK.won ? "g" : col[i] || "n"}${i === TK.sel ? " sel" : ""}" data-act="tkcell" data-i="${i}">${up(TK.cur[i])}</button>`
+    : `<span class="tk hole"></span>`).join("");
+  return `<div class="screen">${gameHead("takas", "Takas", TK, `${TK.left} takas hakkı`)}
+    <div class="tkwrap"><div class="tkgrid">${cells}</div></div>
+    <p class="sub" style="margin-top:14px">${TK.over ? (TK.won ? "Tüm kelimeler tamam!" : "Takas hakkın bitti") : "İki harfe dokunarak yerlerini değiştir"}</p>
+    <div class="spacer"></div>
+    ${TK.over ? overBar("takas") : `<div class="tklegend"><span><i class="g"></i>doğru yer</span><span><i class="y"></i>bu kelimede var</span><span><i class="n"></i>yok</span></div>`}
+  </div>`;
+}
+function tkTap(i) {
+  if (TK.over || TK.cur[i] === TK.sol[i]) return;
+  if (TK.sel < 0) { TK.sel = i; return render(); }
+  if (TK.sel === i) { TK.sel = -1; return render(); }
+  const a = TK.sel; TK.sel = -1;
+  [TK.cur[a], TK.cur[i]] = [TK.cur[i], TK.cur[a]]; TK.left--;
+  if (TK_CELLS.every(x => TK.cur[x] === TK.sol[x])) { TK.won = true; return GAMES.takas.win(); }
+  if (TK.left <= 0) { TK.over = true; TK.won = false; TK.cur = TK.sol.slice(); GAMES.takas.save(); render(); toast("Takas hakkın bitti"); return setTimeout(GAMES.takas.result, 900); }
+  GAMES.takas.save(); render();
+}
+defineGame("takas", "Takas", {
+  make: tkMake, get: () => TK, set: g => { TK = g; },
+  line: g => g.won ? `Altı kelimeyi <b>${g.total - g.left} takasla</b>, ${fmtTime(g.elapsed)} sürede tamamladın.` : "Takas hakkın bitti. Doğru kelimeler ızgarada gösteriliyor.",
+  shareExtra: g => g.won ? ` · ${g.left} takas arttı` : " · tamamlanamadı",
+  help: () => openModal(`<h2>Nasıl oynanır</h2>
+    <p>Izgarada 3 yatay ve 3 dikey kelime var; harfleri karışık. İki harfe dokunarak <b>yerlerini değiştir</b>.</p>
+    <p><b>Yeşil</b> harf doğru yerde. <b>Sarı</b> harf bu satırın ya da sütunun kelimesinde var ama başka yerde. Gri harf o kelimelerde yok.</p>
+    <p>Takas hakkın sınırlı: Kolay 16, Orta 15, Zor 12. En kısa çözüm her zaman bu hakkın içinde.</p>`)
 });
 
 render();
