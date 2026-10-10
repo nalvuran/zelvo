@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 11 | 10 Ekim 2026 | Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi. |
 | 10 | 10 Ekim 2026 | iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor. |
 | 9 | 10 Ekim 2026 | iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı. |
 | 8 | 10 Ekim 2026 | Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor. |

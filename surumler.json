@@ -48,5 +48,10 @@
     "n": 10,
     "date": "10 Ekim 2026",
     "text": "iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."
+  },
+  {
+    "n": 11,
+    "date": "10 Ekim 2026",
+    "text": "Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."
   }
 ]
