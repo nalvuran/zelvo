@@ -17,3 +17,13 @@ Her gün yeni bulmacalar: Parola, Gruplanmış, Mini Çapraz, Sudoku, Kelime Av�
 | `firestore.rules` | Veritabanı güvenlik kuralları |
 
 Firebase sürümü: 12.19.0
+
+## Sürüm geçmişi
+
+Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
+
+| Sürüm | Tarih | Değişiklik |
+| --- | --- | --- |
+| 3 | 10 Ekim 2026 | Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor. |
+| 2 | 10 Ekim 2026 | Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi. |
+| 1 | 10 Ekim 2026 | İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama. |
