@@ -467,17 +467,34 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 html { -webkit-text-size-adjust: 100%; }
 /* Sayfa kaydırılamaz; uygulama ekrana sabit. iPhone ana ekran uygulamasında alt menünün ilk açılışta yukarıda kalmasını önler */
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
-.app { position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: auto; margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+.app { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: var(--app-h, 100dvh); margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+/* Alt menü uygulama kutusunun en altında (ekran yüksekliği JS ile ölçülüyor) */
+.tabbar { position: absolute; left: 0; right: 0; transform: none; width: auto; max-width: none; }
 .screen { -webkit-overflow-scrolling: touch; }
 [hidden] { display: none !important; }
 img { max-width: 100%; }
 </style>
 </head>
 <body>
+<script>
+/* iPhone ana ekran uygulaması ilk açılışta yüksekliği üst çubuk kadar eksik bildiriyor; bu yüzden yükseklik ekran boyutundan alınır */
+(function () {
+  function fit() {
+    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const standalone = navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+    const portrait = window.innerHeight >= window.innerWidth;
+    const h = ios && standalone ? (portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height)) : window.innerHeight;
+    document.documentElement.style.setProperty("--app-h", h + "px");
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 300));
+})();
+</script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":6,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."}];</script>
-<script src="content.js?v=20261010135835"></script>
+window.ZELVO_VERSION = {"n":7,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."},{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."}];</script>
+<script src="content.js?v=20261010140133"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>

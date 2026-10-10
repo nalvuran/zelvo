@@ -28,5 +28,10 @@
     "n": 6,
     "date": "10 Ekim 2026",
     "text": "Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."
+  },
+  {
+    "n": 7,
+    "date": "10 Ekim 2026",
+    "text": "Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."
   }
 ]
