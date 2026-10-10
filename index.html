@@ -194,18 +194,18 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .screen.login .vline { margin-top: 18px; }
 
 /* ---------- bottom bar ---------- */
-.screen.with-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+.screen.with-tabbar { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
 .tabbar {
   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 460px; z-index: 10;
   display: grid; grid-template-columns: repeat(4, 1fr);
-  padding: 8px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+  padding: 4px 8px calc(2px + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(180deg, rgba(10,30,52,.85), rgba(6,18,33,.98));
   border-top: 1px solid var(--glass-line); border-radius: 26px 26px 0 0;
 }
-.tab { display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: center; font-size: .72rem; font-weight: 800; letter-spacing: .04em; color: #8BA6BF; position: relative; }
-.tab svg { width: 26px; height: 26px; }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: .72rem; font-weight: 800; letter-spacing: .04em; color: #8BA6BF; position: relative; }
+.tab svg { width: 23px; height: 23px; }
 .tab.on { color: var(--g-yellow); }
-.tab.on::before { content: ""; position: absolute; top: -9px; width: 44px; height: 3px; border-radius: 3px; background: var(--g-yellow); }
+.tab.on::before { content: ""; position: absolute; top: -5px; width: 44px; height: 3px; border-radius: 3px; background: var(--g-yellow); }
 .spacer { flex: 1; min-height: 16px; }
 
 /* ---------- game screen ---------- */
@@ -473,7 +473,7 @@ body { background-color: #061221; }
 .app { position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: auto; margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
 /* Alt menü uygulama kutusunun en altında */
 /* iOS 26 hatası: altta boş şerit varsa menünün alt boşluğu kısalır ve şerit menüyle aynı renkte görünür */
-html.ios-gap .tabbar { padding-bottom: 6px; background: linear-gradient(180deg, rgba(10,30,52,.92), #061221); }
+html.ios-gap .tabbar { padding-bottom: 0; background: linear-gradient(180deg, rgba(10,30,52,.92), #061221); }
 .tabbar { position: absolute; left: 0; right: 0; transform: none; width: auto; max-width: none; }
 .screen { -webkit-overflow-scrolling: touch; }
 [hidden] { display: none !important; }
@@ -507,9 +507,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":11,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."},{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."},{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."},{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."}];</script>
-<script src="content.js?v=20261010152912"></script>
+window.ZELVO_VERSION = {"n":12,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."},{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."},{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."}];</script>
+<script src="content.js?v=20261010153100"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>

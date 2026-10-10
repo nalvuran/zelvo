@@ -53,5 +53,10 @@
     "n": 11,
     "date": "10 Ekim 2026",
     "text": "Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."
+  },
+  {
+    "n": 12,
+    "date": "10 Ekim 2026",
+    "text": "Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."
   }
 ]
