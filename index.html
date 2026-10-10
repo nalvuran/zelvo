@@ -79,7 +79,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
   background: linear-gradient(180deg, #FFB070, #FF6A3D);
   box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 0 3px 0 #B33A16;
 }
-.flame svg { width: 18px; height: 18px; }
+.flame svg { width: 18px; height: 18px; color: #fff; }
 
 /* ---------- logo ---------- */
 .hero { text-align: center; padding: 14px 0 6px; position: relative; }
@@ -155,6 +155,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
   transition: transform .08s;
 }
 .gt:active { transform: translateY(4px); box-shadow: inset 0 2px 0 rgba(255,255,255,.4), 0 1px 0 var(--lip); }
+.gt .gic svg { width: 28px; height: 28px; color: #fff; }
 .gt .gic { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; background: rgba(0,0,0,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.2); }
 .gt b { font-family: var(--display); font-weight: 700; font-size: .95rem; line-height: 1.05; text-shadow: 0 1px 0 rgba(0,0,0,.2); min-height: 2.1em; display: grid; place-items: center; }
 .gt .gst { font-size: .7rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--lo); white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -507,9 +508,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":12,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."},{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."},{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."}];</script>
-<script src="content.js?v=20261010153100"></script>
+window.ZELVO_VERSION = {"n":13,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."},{"n":10,"date":"10 Ekim 2026","text":"iOS 26 ana ekran uygulamasındaki alt şerit menüyle aynı renge boyandı; şerit varken menünün alt boşluğu kısalıyor."},{"n":9,"date":"10 Ekim 2026","text":"iOS 26'daki alt boşluk hatası için: uygulama açılınca pencerenin doğru ölçülmesi için kendini bir kez kaydırıyor. Sürüm 7'deki ekran boyutu ölçümü geri alındı."}];</script>
+<script src="content.js?v=20261010153523"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -577,27 +578,33 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 function dayNo() { const d = new Date(); return Math.max(1, Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - EPOCH) / 864e5) + 1); }
 const MONTHS = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
 
+/* İkon seti (Zuqio ile aynı stil): çizgi (outline) · 24×24 · çizgi kalınlığı 2 · yuvarlak uçlar ve köşeler · tek renk (currentColor).
+   Yeni ikon eklerken de bu kurallar kullanılır: I("<path .../>") */
+const I = paths => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
 const ICON = {
-  gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
-  flame: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2c1 3.5 5 5.6 5 10.5A5 5 0 0 1 7 12.5c0-2 1-3.4 2.2-4.4.2 1.6 1 2.6 2 3C11 8 11.4 4.6 12 2z"/></svg>',
-  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
-  help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.5-2.7 4M12 17.5h.01"/></svg>',
-  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
-  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6.5 8 6.5v8.5a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>',
-  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
-  chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 20V12M12 20V5M19 20v-5"/></svg>',
-  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>',
-  parola: '<svg width="34" height="20" viewBox="0 0 34 20" aria-hidden="true"><rect x="0" y="2" width="6" height="16" rx="2" fill="#fff"/><rect x="7" y="2" width="6" height="16" rx="2" fill="#fff"/><rect x="14" y="2" width="6" height="16" rx="2" fill="#FFD966"/><rect x="21" y="2" width="6" height="16" rx="2" fill="#fff"/><rect x="28" y="2" width="6" height="16" rx="2" fill="#fff" opacity=".55"/></svg>',
-  grup: '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="0" y="0" width="12" height="12" rx="3.5" fill="#fff"/><rect x="14" y="0" width="12" height="12" rx="3.5" fill="#fff"/><rect x="0" y="14" width="12" height="12" rx="3.5" fill="#fff"/><rect x="14" y="14" width="12" height="12" rx="3.5" fill="#FFD966"/></svg>',
-  capraz: '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><g fill="#fff"><rect x="0" y="0" width="8" height="8" rx="1.5"/><rect x="9" y="0" width="8" height="8" rx="1.5"/><rect x="18" y="0" width="8" height="8" rx="1.5"/><rect x="0" y="9" width="8" height="8" rx="1.5"/><rect x="18" y="9" width="8" height="8" rx="1.5"/><rect x="0" y="18" width="8" height="8" rx="1.5"/><rect x="9" y="18" width="8" height="8" rx="1.5"/><rect x="18" y="18" width="8" height="8" rx="1.5"/></g><rect x="9" y="9" width="8" height="8" rx="1.5" fill="#fff" opacity=".35"/></svg>',
-  sudoku: '<span style="font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1">9</span>',
-  avi: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>',
-  kripto: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10.5" rx="3"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg>',
-  merdiven: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></svg>',
-  anagram: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>',
-  zincir: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>',
-  hedef: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="#fff"/></svg>',
-  out: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M7 17L17 7M9 7h8v8"/></svg>'
+  /* arayüz */
+  gear: I('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'),
+  flame: I('<path d="M12 2.5c.6 3 2.8 4.7 4.4 6.6 1.3 1.5 2.1 3.2 2.1 5.1a6.5 6.5 0 0 1-13 0c0-1.5.6-3 1.6-4 .2 1.6 1.1 2.7 2.4 3-.6-3.7.4-7.6 2.5-10.7z"/>'),
+  back: I('<path d="M15 18l-6-6 6-6"/>'),
+  help: I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.6 2.6 0 0 1 5 .8c0 1.8-2.5 2.4-2.5 3.9"/><path d="M12 17h.01"/>'),
+  close: I('<path d="M6 6l12 12M18 6L6 18"/>'),
+  home: I('<path d="M3.5 10.5L12 3.5l8.5 7"/><path d="M5.5 9v11h4.5v-5.5h4V20h4.5V9"/>'),
+  cal: I('<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
+  chart: I('<path d="M4 20h16"/><path d="M7.5 16v-5M12 16V5M16.5 16v-3.5"/>'),
+  user: I('<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/>'),
+  check: I('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
+  out: I('<path d="M7 17L17 7M9 7h8v8"/>'),
+  /* bulmacalar */
+  parola: I('<rect x="2.5" y="6.5" width="19" height="11" rx="2.5"/><path d="M8.8 6.5v11M15.2 6.5v11"/><path d="M5.6 12h.01M12 12h.01M18.4 12h.01"/>'),
+  grup: I('<rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/>'),
+  capraz: I('<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17"/><path d="M3.5 9.2l5.7-5.7M3.5 6.4l2.9-2.9"/>'),
+  sudoku: I('<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><circle cx="12" cy="10.2" r="2.4"/><path d="M14.4 10.2v2.6a2.6 2.6 0 0 1-4.4 1.9"/>'),
+  avi: I('<circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/>'),
+  kripto: I('<rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2"/>'),
+  merdiven: I('<path d="M7 3v18M17 3v18M7 7.5h10M7 12h10M7 16.5h10"/>'),
+  anagram: I('<path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>'),
+  hedef: I('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
+  backspace: I('<path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/>')
 };
 
 /* ---------- state ---------- */
@@ -751,7 +758,7 @@ function homeHTML() {
       ${HUB.map(g => {
         const stt = g.status ? g.status() : null;
         return `<button class="gt ${g.color}${g.act ? "" : " soon"}${stt && stt.done ? " done" : ""}" data-act="${g.act || "soon"}" data-n="${g.name}">
-          ${stt && stt.done ? `<span class="check" aria-label="Tamamlandı"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>` : ""}
+          ${stt && stt.done ? `<span class="check" aria-label="Tamamlandı">${ICON.check}</span>` : ""}
           <span class="gic">${g.icon}</span>
           <b>${g.name}</b>
           ${stt && stt.done ? `<span class="gst">${stt.label}</span>` : ""}
@@ -1044,7 +1051,7 @@ function parolaHTML() {
   P.guesses.forEach((g, r) => { if (r === pReveal) return; pScore(g, P.answer).forEach((s, i) => { if (!ks[g[i]] || rank[s] > rank[ks[g[i]]]) ks[g[i]] = s; }); });
   const kb = KROWS.map(row => `<div class="krow">${row.map(k => {
     if (k === "enter") return `<button class="key wide enter" data-act="pkey" data-k="enter" aria-label="Tahmini gönder">GİR</button>`;
-    if (k === "back") return `<button class="key wide" data-act="pkey" data-k="back" aria-label="Sil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/></svg></button>`;
+    if (k === "back") return `<button class="key wide" data-act="pkey" data-k="back" aria-label="Sil">${ICON.backspace}</button>`;
     return `<button class="key${ks[k] ? " " + ks[k] : ""}" data-act="pkey" data-k="${k}">${up(k)}</button>`;
   }).join("")}</div>`).join("");
   return `
@@ -1271,7 +1278,7 @@ function miniHTML() {
   }
   const kb = KROWS.map(row => `<div class="krow">${row.map(k => {
     if (k === "enter") return `<button class="key wide enter" data-act="mclue" data-k="1" aria-label="Sonraki ipucu">SONRAKİ</button>`;
-    if (k === "back") return `<button class="key wide" data-act="mkey" data-k="back" aria-label="Sil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/></svg></button>`;
+    if (k === "back") return `<button class="key wide" data-act="mkey" data-k="back" aria-label="Sil">${ICON.backspace}</button>`;
     return `<button class="key" data-act="mkey" data-k="${k}">${up(k)}</button>`;
   }).join("")}</div>`).join("");
   return `
@@ -1472,7 +1479,7 @@ function sHelp() {
 
 /* ================= ORTAK ALTYAPI: yeni oyunlar ================= */
 const TR_ALPHA = "abcçdefgğhıijklmnoöprsştuüvyz";
-const BACK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/></svg>';
+const BACK_SVG = ICON.backspace;
 function shuffleR(a, r) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function dayDone(id) { const s = store.get("zelvo-" + id + "-day", null); return s && s.no === dayNo() && s.over ? s : null; }
 function timedStatus(id) { const s = dayDone(id); return { done: !!s, label: s ? fmtTime(s.elapsed) : LVL_NAME[getLevel(id)] }; }

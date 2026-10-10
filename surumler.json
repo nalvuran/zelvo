@@ -58,5 +58,10 @@
     "n": 12,
     "date": "10 Ekim 2026",
     "text": "Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."
+  },
+  {
+    "n": 13,
+    "date": "10 Ekim 2026",
+    "text": "Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."
   }
 ]
