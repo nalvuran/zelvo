@@ -1,5 +1,22 @@
 [
-  {"n": 1, "date": "10 Ekim 2026", "text": "İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."},
-  {"n": 2, "date": "10 Ekim 2026", "text": "Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},
-  {"n": 3, "date": "10 Ekim 2026", "text": "Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."}
+  {
+    "n": 1,
+    "date": "10 Ekim 2026",
+    "text": "İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."
+  },
+  {
+    "n": 2,
+    "date": "10 Ekim 2026",
+    "text": "Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."
+  },
+  {
+    "n": 3,
+    "date": "10 Ekim 2026",
+    "text": "Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."
+  },
+  {
+    "n": 4,
+    "date": "10 Ekim 2026",
+    "text": "Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."
+  }
 ]

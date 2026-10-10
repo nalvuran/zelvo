@@ -472,9 +472,9 @@ img { max-width: 100%; }
 </head>
 <body>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":3,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},{"n":1,"date":"10 Ekim 2026","text":"İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."}];</script>
-<script src="content.js?v=20261010135253"></script>
+window.ZELVO_VERSION = {"n":4,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},{"n":1,"date":"10 Ekim 2026","text":"İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."}];</script>
+<script src="content.js?v=20261010135434"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -708,7 +708,7 @@ function homeHTML() {
           ${stt && stt.done ? `<span class="check" aria-label="Tamamlandı"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>` : ""}
           <span class="gic">${g.icon}</span>
           <b>${g.name}</b>
-          <span class="gst">${stt ? stt.label : "Yakında"}</span>
+          ${stt && stt.done ? `<span class="gst">${stt.label}</span>` : ""}
         </button>`;
       }).join("")}
     </div>
