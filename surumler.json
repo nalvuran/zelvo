@@ -33,5 +33,10 @@
     "n": 7,
     "date": "10 Ekim 2026",
     "text": "Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."
+  },
+  {
+    "n": 8,
+    "date": "10 Ekim 2026",
+    "text": "Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."
   }
 ]

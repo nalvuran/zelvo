@@ -467,6 +467,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 html { -webkit-text-size-adjust: 100%; }
 /* Sayfa kaydırılamaz; uygulama ekrana sabit. iPhone ana ekran uygulamasında alt menünün ilk açılışta yukarıda kalmasını önler */
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+html { background: #061221; }
 .app { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: var(--app-h, 100dvh); margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
 /* Alt menü uygulama kutusunun en altında (ekran yüksekliği JS ile ölçülüyor) */
 .tabbar { position: absolute; left: 0; right: 0; transform: none; width: auto; max-width: none; }
@@ -492,9 +493,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":7,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."},{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."}];</script>
-<script src="content.js?v=20261010140133"></script>
+window.ZELVO_VERSION = {"n":8,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":8,"date":"10 Ekim 2026","text":"Ayarlar'a ekran ölçüleri teşhis satırı eklendi; alt menünün altında boşluk kalırsa menüyle aynı renkte görünüyor."},{"n":7,"date":"10 Ekim 2026","text":"Ana ekran uygulamasında yükseklik artık telefonun ekran boyutundan alınıyor; alt menü ilk açılışta da en altta."},{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."}];</script>
+<script src="content.js?v=20261010151553"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -644,11 +645,18 @@ function loginHTML() {
 const APP_VERSION = window.ZELVO_VERSION || null;
 const APP_CHANGES = window.ZELVO_CHANGES || [];
 function versionLine() { return APP_VERSION ? `Zelvo · Sürüm ${APP_VERSION.n} · ${APP_VERSION.date}` : "Zelvo · Prototip"; }
+/* Teşhis: telefonun bildirdiği ekran ölçüleri (alt menü konumu sorunları için) */
+function screenInfo() {
+  const app = document.getElementById("app"), cs = getComputedStyle(document.documentElement);
+  const sa = navigator.standalone === true ? "ana ekran" : (window.matchMedia && matchMedia("(display-mode: standalone)").matches ? "standalone" : "tarayıcı");
+  return `Ekran ${screen.width}×${screen.height} · pencere ${innerWidth}×${innerHeight} · uygulama ${app ? Math.round(app.getBoundingClientRect().height) : "?"} · ölçü ${cs.getPropertyValue("--app-h").trim() || "yok"} · ${sa}`;
+}
 function showSettings() {
   openModal(`<h2>Ayarlar</h2>
     <p style="font-size:.9rem;color:var(--muted)">Ayarlar yakında geliyor.</p>
     <div class="eyebrow">Sürüm</div>
     <p><b>${esc(versionLine())}</b></p>
+    <p class="vline" style="text-align:left;margin-top:4px">${esc(screenInfo())}</p>
     ${APP_CHANGES.length ? `<div class="eyebrow">Son değişiklikler</div><div class="changes">${APP_CHANGES.map(c => `<div class="chg"><b>Sürüm ${c.n}</b><span>${esc(c.date)}</span><p>${esc(c.text)}</p></div>`).join("")}</div>` : ""}`);
 }
 function showProfile() {
