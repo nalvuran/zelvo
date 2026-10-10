@@ -73,5 +73,10 @@
     "n": 15,
     "date": "10 Ekim 2026",
     "text": "Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."
+  },
+  {
+    "n": 16,
+    "date": "10 Ekim 2026",
+    "text": "Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle."
   }
 ]

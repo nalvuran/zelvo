@@ -214,7 +214,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 
 /* ---------- game screen ---------- */
 .ghead { display: flex; align-items: center; gap: 10px; min-height: 56px; }
-.ghead h1 { flex: 1; margin: 0; font-family: var(--display); font-weight: 700; font-size: 1.5rem; text-align: center; }
+.ghead h1 { flex: 1; margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.1rem, 5.4vw, 1.5rem); line-height: 1.1; text-align: center; text-wrap: balance; }
 .sub { text-align: center; color: var(--muted); font-weight: 600; font-size: .92rem; margin: 2px 0 14px; }
 .board { display: flex; flex-direction: column; gap: 8px; }
 .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
@@ -581,9 +581,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":15,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."}];</script>
-<script src="content.js?v=20261010154725"></script>
+window.ZELVO_VERSION = {"n":16,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":16,"date":"10 Ekim 2026","text":"Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle."},{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."}];</script>
+<script src="content.js?v=20261010154914"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -650,7 +650,7 @@ function levelBar(id) {
 /* Oyun kimliği ↔ açma komutu */
 const GAME_ACT = { parola: "parola", grup: "play", mini: "mini", sudoku: "sudoku", avi: "avi", kripto: "kripto", merdiven: "merdiven", anagram: "anagram", hedef: "hedef", turet: "turet", sozluk: "sozluk", takas: "takas" };
 const GAME_ID = Object.fromEntries(Object.entries(GAME_ACT).map(([id, a]) => [a, id]));
-const GAME_NAME = { parola: "Parola", grup: "Gruplanmış", mini: "Mini Çapraz", sudoku: "Sudoku", avi: "Kelime Avı", kripto: "Kriptogram", merdiven: "Merdiven", anagram: "Anagram", hedef: "Hedef Sayı", turet: "Türet", sozluk: "Sözlük", takas: "Takas" };
+const GAME_NAME = { parola: "Parola", grup: "Gruplanmış", mini: "Mini Çapraz Bulmaca", sudoku: "Sudoku", avi: "Kelime Arama", kripto: "Kriptogram", merdiven: "Tangle", anagram: "Anagram", hedef: "Hedef Sayı", turet: "Anygram", sozluk: "Gizli Kelime", takas: "Hashtag" };
 const LEVEL_DESC = {
   parola: ["4 harfli kelime", "5 harfli kelime", "6 harfli kelime"],
   grup: ["Grup adları ipucu olarak açık", "4 hata hakkı", "3 hata hakkı, uyarı yok"],
@@ -847,16 +847,16 @@ function homeHTML() {
   const HUB = [
     { name: "Parola", color: "green", icon: ICON.parola, act: "parola", status: () => ({ done: donePar, label: parStatus }) },
     { name: "Gruplanmış", color: "purple", icon: ICON.grup, act: "play", status: () => ({ done: doneGrup, label: grupStatus }) },
-    { name: "Mini Çapraz", color: "blue", icon: ICON.capraz, act: "mini", status: () => ({ done: doneMini, label: miniStatus }) },
+    { name: "Mini Çapraz Bulmaca", color: "blue", icon: ICON.capraz, act: "mini", status: () => ({ done: doneMini, label: miniStatus }) },
     { name: "Sudoku", color: "orange", icon: ICON.sudoku, act: "sudoku", status: () => ({ done: doneSud, label: sudStatus }) },
-    { name: "Kelime Avı", color: "teal", icon: ICON.avi, act: "avi", status: () => timedStatus("avi", "Oyna") },
+    { name: "Kelime Arama", color: "teal", icon: ICON.avi, act: "avi", status: () => timedStatus("avi", "Oyna") },
     { name: "Kriptogram", color: "pink", icon: ICON.kripto, act: "kripto", status: () => timedStatus("kripto", "Oyna") },
-    { name: "Merdiven", color: "red", icon: ICON.merdiven, act: "merdiven", status: () => timedStatus("merdiven", "Oyna") },
+    { name: "Tangle", color: "red", icon: ICON.merdiven, act: "merdiven", status: () => timedStatus("merdiven", "Oyna") },
     { name: "Anagram", color: "indigo", icon: ICON.anagram, act: "anagram", status: () => timedStatus("anagram", "Oyna") },
     { name: "Hedef Sayı", color: "lime", icon: ICON.hedef, act: "hedef", status: () => timedStatus("hedef", "Oyna") },
-    { name: "Türet", color: "gold", icon: ICON.turet, act: "turet", status: () => timedStatus("turet") },
-    { name: "Sözlük", color: "cyan", icon: ICON.sozluk, act: "sozluk", status: () => timedStatus("sozluk") },
-    { name: "Takas", color: "plum", icon: ICON.takas, act: "takas", status: () => timedStatus("takas") }
+    { name: "Anygram", color: "gold", icon: ICON.turet, act: "turet", status: () => timedStatus("turet") },
+    { name: "Gizli Kelime", color: "cyan", icon: ICON.sozluk, act: "sozluk", status: () => timedStatus("sozluk") },
+    { name: "Hashtag", color: "plum", icon: ICON.takas, act: "takas", status: () => timedStatus("takas") }
   ];
   const liveCount = HUB.filter(g => g.act).length;
   const doneCount = HUB.filter(g => g.status && g.status().done).length;
@@ -1083,7 +1083,7 @@ function statsBlock() {
       <div><b>${s.perfect}</b><span>Hatasız</span></div>
     </div>`;
 }
-function showStats() { openModal(`<h2>İstatistikler</h2><div class="eyebrow">Ortak seri</div><p><b>${streakDays()} gün</b> üst üste en az bir günlük bulmaca bitirdin.</p>${pStatsBlock(0)}${statsBlock()}${timeStatsBlock("Mini Çapraz · " + LVL_NAME[getLevel("mini")], "zelvo-mini-stats")}${timeStatsBlock("Sudoku · " + LVL_NAME[getLevel("sudoku")], "zelvo-sudoku-stats")}${Object.keys(GAMES).map(k => timeStatsBlock(GAMES[k].name + " · " + LVL_NAME[getLevel(k)], "zelvo-" + k + "-stats")).join("")}<p style="font-size:.82rem;color:var(--muted)">Her oyunun şu an seçili seviyesinin istatistikleri gösteriliyor.</p>`); }
+function showStats() { openModal(`<h2>İstatistikler</h2><div class="eyebrow">Ortak seri</div><p><b>${streakDays()} gün</b> üst üste en az bir günlük bulmaca bitirdin.</p>${pStatsBlock(0)}${statsBlock()}${timeStatsBlock("Mini Çapraz Bulmaca · " + LVL_NAME[getLevel("mini")], "zelvo-mini-stats")}${timeStatsBlock("Sudoku · " + LVL_NAME[getLevel("sudoku")], "zelvo-sudoku-stats")}${Object.keys(GAMES).map(k => timeStatsBlock(GAMES[k].name + " · " + LVL_NAME[getLevel(k)], "zelvo-" + k + "-stats")).join("")}<p style="font-size:.82rem;color:var(--muted)">Her oyunun şu an seçili seviyesinin istatistikleri gösteriliyor.</p>`); }
 function emojiGrid() { return G.guesses.map(g => g.map(w => BAND_EMOJI[levelOf(w)]).join("")).join("\n"); }
 function shareText() { return `Zelvo Gruplanmış ${G.mode === "daily" ? "#" + G.no : "(serbest)"} · ${LVL_NAME[G.lvl] || "Orta"}\n${emojiGrid()}`; }
 function countdown() {
@@ -1415,7 +1415,7 @@ function miniHTML() {
   <div class="screen">
     <div class="ghead">
       <button class="round" data-act="home" aria-label="Ana sayfaya dön">${ICON.back}</button>
-      <h1>Mini Çapraz ${M.mode === "daily" ? "#" + M.no : ""}</h1>
+      <h1>Mini Çapraz Bulmaca ${M.mode === "daily" ? "#" + M.no : ""}</h1>
       <button class="round" data-act="mhelp" aria-label="Nasıl oynanır">${ICON.help}</button>
     </div>
     ${levelBar("mini")}
@@ -1475,9 +1475,9 @@ function mReveal() {
   M.reveals++; mPress(M.sol[M.sel]);
 }
 function mResult() {
-  timeResult({ title: "Tebrikler!", line: `Mini Çapraz'ı <b>${fmtTime(M.elapsed)}</b> sürede çözdün.`, daily: M.mode === "daily",
-    name: "Mini Çapraz", key: "zelvo-mini-stats", again: "mfree",
-    share: `Zelvo Mini Çapraz ${M.mode === "daily" ? "#" + M.no : "(serbest)"} · ${LVL_NAME[M.lvl]}\n⏱ ${fmtTime(M.elapsed)}` });
+  timeResult({ title: "Tebrikler!", line: `Mini Çapraz Bulmaca'yı <b>${fmtTime(M.elapsed)}</b> sürede çözdün.`, daily: M.mode === "daily",
+    name: "Mini Çapraz Bulmaca", key: "zelvo-mini-stats", again: "mfree",
+    share: `Zelvo Mini Çapraz Bulmaca ${M.mode === "daily" ? "#" + M.no : "(serbest)"} · ${LVL_NAME[M.lvl]}\n⏱ ${fmtTime(M.elapsed)}` });
 }
 function mHelp() {
   openModal(`<h2>Nasıl oynanır</h2>
@@ -1709,7 +1709,7 @@ function wsHTML() {
   const cells = WS.grid.map((ch, i) => `<button class="wsc${i === WS.start ? " pick" : fc[i] ? " " + fc[i] : ""}" data-i="${i}" aria-label="${up(ch)}, satır ${Math.floor(i / N) + 1}, sütun ${i % N + 1}">${up(ch)}</button>`).join("");
   const hide = WS.lvl === "zor";
   const chips = WS.words.map((w, i) => WS.found.includes(i) ? `<span class="chip found">${up(w.w)}</span>` : hide ? `<span class="chip">${[...w.w].length} harf</span>` : `<span class="chip">${up(w.w)}</span>`).join("");
-  return `<div class="screen">${gameHead("avi", "Kelime Avı", WS, `${WS.found.length}/${WS.words.length} bulundu`)}
+  return `<div class="screen">${gameHead("avi", "Kelime Arama", WS, `${WS.found.length}/${WS.words.length} bulundu`)}
     <p class="wstheme">${esc(WS.theme)}</p>
     <div class="wsgrid${N > 8 ? " big" : ""}" style="grid-template-columns:repeat(${N},minmax(0,1fr))">${cells}</div>
     <div class="wschips">${chips}</div>
@@ -1778,7 +1778,7 @@ function wsBindDrag() {
   grid.addEventListener("pointercancel", finish);
   grid.addEventListener("click", e => { if (e.detail !== 0) return; const b = e.target.closest(".wsc"); if (b) wsTap(+b.dataset.i); });
 }
-defineGame("avi", "Kelime Avı", {
+defineGame("avi", "Kelime Arama", {
   make: wsMake, get: () => WS, set: g => { WS = g; },
   line: g => `${g.theme} temalı 6 kelimeyi <b>${fmtTime(g.elapsed)}</b> sürede buldun.`,
   help: () => openModal(`<h2>Nasıl oynanır</h2>
@@ -1881,7 +1881,7 @@ function lHTML() {
     else rows.push(lRow(i === L.steps.length && !L.over ? L.current : "", ""));
   }
   rows.push(lRow(end, L.over ? "done" : "goal"));
-  return `<div class="screen">${gameHead("merdiven", "Merdiven", L, `${need} adım${L.hints ? " · " + L.hints + " ipucu" : ""}`)}
+  return `<div class="screen">${gameHead("merdiven", "Tangle", L, `${need} adım${L.hints ? " · " + L.hints + " ipucu" : ""}`)}
     <div class="lwrap">${rows.join("")}</div>
     <p class="lsteps">${up(L.path[0])} → ${up(end)} · her adımda tek harf değiştir</p>
     ${L.over ? overBar("merdiven") : `<div class="ltools"><button class="pill" data-act="lundo" ${L.steps.length > 1 ? "" : "disabled"}>Geri al</button><button class="pill" data-act="lhint">İpucu</button></div>${keyboardHTML("lkey", "GİR")}`}
@@ -1909,7 +1909,7 @@ function lHint() {
   if (!nb) return toast("Bir adım geri al ve tekrar dene");
   L.current = nb; L.hints++; GAMES.merdiven.save(); render();
 }
-defineGame("merdiven", "Merdiven", {
+defineGame("merdiven", "Tangle", {
   make: lMake, get: () => L, set: g => { L = g; },
   line: g => `${up(g.path[0])} kelimesinden ${up(g.path[g.path.length - 1])} kelimesine <b>${fmtTime(g.elapsed)}</b> sürede ulaştın${g.hints ? ` (${g.hints} ipucu)` : ""}.`,
   shareExtra: g => ` · ${g.path.length - 1} adım${g.hints ? " · " + g.hints + " ipucu" : ""}`,
@@ -2076,7 +2076,7 @@ function tuHTML() {
   }).join("")}</div>`).join("");
   const word = TU.cur.map(i => up(TU.letters[i])).join("");
   const tiles = TU.letters.map((ch, i) => `<button class="tut${TU.cur.includes(i) ? " used" : ""}" data-act="tutile" data-i="${i}">${up(ch)}</button>`).join("");
-  return `<div class="screen">${gameHead("turet", "Türet", TU, `${TU.found.length}/${TU.req.length} kelime${TU.bonus.length ? " · " + TU.bonus.length + " bonus" : ""}`)}
+  return `<div class="screen">${gameHead("turet", "Anygram", TU, `${TU.found.length}/${TU.req.length} kelime${TU.bonus.length ? " · " + TU.bonus.length + " bonus" : ""}`)}
     <div class="tulist">${lists}</div>
     <div class="spacer"></div>
     ${TU.over ? overBar("turet") : `
@@ -2121,7 +2121,7 @@ function tuType(k) {
   const i = TU.letters.findIndex((ch, x) => ch === k && !TU.cur.includes(x));
   if (i >= 0) tuTile(i);
 }
-defineGame("turet", "Türet", {
+defineGame("turet", "Anygram", {
   make: tuMake, get: () => TU, set: g => { TU = g; },
   line: g => `"${up(g.root)}" harflerinden ${g.req.length} kelimeyi <b>${fmtTime(g.elapsed)}</b> sürede buldun${g.bonus.length ? `, ${g.bonus.length} bonus kelime` : ""}${g.hints ? ` (${g.hints} ipucu)` : ""}.`,
   shareExtra: g => ` · ${g.req.length} kelime${g.bonus.length ? " · +" + g.bonus.length + " bonus" : ""}`,
@@ -2150,7 +2150,7 @@ function szHTML() {
   const show = (w, empty) => w ? `${[...w].map((ch, i) => `<i class="${i < pre ? "pre" : ""}">${up(ch)}</i>`).join("")}` : `<span class="szempty">${empty}</span>`;
   const slots = [...Array(SZ.len)].map((_, i) => `<i>${SZ.over ? up(SZ.secret[i]) : SZ.current[i] ? up(SZ.current[i]) : ""}</i>`).join("");
   const last = SZ.guesses.slice(-3).reverse().map(g => `<span class="chip">${up(g)} ${trCmp(g, SZ.secret) < 0 ? "→ sonra" : trCmp(g, SZ.secret) > 0 ? "← önce" : "✓"}</span>`).join("");
-  return `<div class="screen">${gameHead("sozluk", "Sözlük", SZ, `${SZ.guesses.length} tahmin`)}
+  return `<div class="screen">${gameHead("sozluk", "Gizli Kelime", SZ, `${SZ.guesses.length} tahmin`)}
     <div class="szwrap">
       <div class="szb lo"><small>BUNDAN SONRA GELİR</small><div class="szw">${show(lo, "A")}</div></div>
       <div class="szbar" aria-hidden="true"><div class="szrange" style="left:${left}%;width:${Math.max(0.6, right - left)}%"></div>${lo ? `<b style="left:${pos(lo)}"></b>` : ""}${hi ? `<b style="left:${pos(hi)}"></b>` : ""}<span class="a">A</span><span class="z">Z</span></div>
@@ -2176,7 +2176,7 @@ function szPress(k) {
   else { if (!SZ.hi || trCmp(w, SZ.hi) < 0) SZ.hi = w; toast("Gizli kelime " + up(w) + " kelimesinden ÖNCE gelir"); }
   GAMES.sozluk.save(); render();
 }
-defineGame("sozluk", "Sözlük", {
+defineGame("sozluk", "Gizli Kelime", {
   make: szMake, get: () => SZ, set: g => { SZ = g; },
   line: g => `Gizli kelime <b>${up(g.secret)}</b> idi; <b>${g.guesses.length} tahminde</b>, ${fmtTime(g.elapsed)} sürede buldun.`,
   shareExtra: g => ` · ${g.guesses.length} tahmin`,
@@ -2226,7 +2226,7 @@ function tkHTML() {
   const cells = [...Array(25).keys()].map(i => TK_CELLS.includes(i)
     ? `<button class="tk ${TK.over && TK.won ? "g" : col[i] || "n"}${i === TK.sel ? " sel" : ""}" data-act="tkcell" data-i="${i}">${up(TK.cur[i])}</button>`
     : `<span class="tk hole"></span>`).join("");
-  return `<div class="screen">${gameHead("takas", "Takas", TK, `${TK.left} takas hakkı`)}
+  return `<div class="screen">${gameHead("takas", "Hashtag", TK, `${TK.left} takas hakkı`)}
     <div class="tkwrap"><div class="tkgrid">${cells}</div></div>
     <p class="sub" style="margin-top:14px">${TK.over ? (TK.won ? "Tüm kelimeler tamam!" : "Takas hakkın bitti") : "İki harfe dokunarak yerlerini değiştir"}</p>
     <div class="spacer"></div>
@@ -2243,7 +2243,7 @@ function tkTap(i) {
   if (TK.left <= 0) { TK.over = true; TK.won = false; TK.cur = TK.sol.slice(); GAMES.takas.save(); render(); toast("Takas hakkın bitti"); return setTimeout(GAMES.takas.result, 900); }
   GAMES.takas.save(); render();
 }
-defineGame("takas", "Takas", {
+defineGame("takas", "Hashtag", {
   make: tkMake, get: () => TK, set: g => { TK = g; },
   line: g => g.won ? `Altı kelimeyi <b>${g.total - g.left} takasla</b>, ${fmtTime(g.elapsed)} sürede tamamladın.` : "Takas hakkın bitti. Doğru kelimeler ızgarada gösteriliyor.",
   shareExtra: g => g.won ? ` · ${g.left} takas arttı` : " · tamamlanamadı",
