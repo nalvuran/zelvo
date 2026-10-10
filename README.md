@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 6 | 10 Ekim 2026 | Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte. |
 | 5 | 10 Ekim 2026 | Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor. |
 | 4 | 10 Ekim 2026 | Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor. |
 | 3 | 10 Ekim 2026 | Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor. |

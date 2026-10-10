@@ -465,16 +465,19 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 </style>
 <style>
 html { -webkit-text-size-adjust: 100%; }
-.app { height: 100vh; height: 100dvh; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+/* Sayfa kaydırılamaz; uygulama ekrana sabit. iPhone ana ekran uygulamasında alt menünün ilk açılışta yukarıda kalmasını önler */
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+.app { position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: auto; margin: 0 auto; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+.screen { -webkit-overflow-scrolling: touch; }
 [hidden] { display: none !important; }
 img { max-width: 100%; }
 </style>
 </head>
 <body>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":5,"date":"10 Ekim 2026"};
-window.ZELVO_CHANGES = [{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."},{"n":1,"date":"10 Ekim 2026","text":"İlk sürüm: 9 bulmaca, Kolay/Orta/Zor seviyeler, Google ile giriş, ana ekrana eklenebilir uygulama."}];</script>
-<script src="content.js?v=20261010135656"></script>
+window.ZELVO_VERSION = {"n":6,"date":"10 Ekim 2026"};
+window.ZELVO_CHANGES = [{"n":6,"date":"10 Ekim 2026","text":"Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."},{"n":5,"date":"10 Ekim 2026","text":"Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."},{"n":4,"date":"10 Ekim 2026","text":"Ana sayfadaki bulmaca kartlarından seviye yazısı kaldırıldı; kartta yalnızca bitirilen bulmacanın sonucu görünüyor."},{"n":3,"date":"10 Ekim 2026","text":"Sürüm numarası eklendi: profil penceresinde ve Ayarlar'da görünüyor, son değişiklikler Ayarlar'da listeleniyor."},{"n":2,"date":"10 Ekim 2026","text":"Alt menü ekranın en altına sabitlendi; iPhone'da altta kalan boşluk giderildi."}];</script>
+<script src="content.js?v=20261010135835"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>

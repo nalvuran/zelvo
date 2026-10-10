@@ -23,5 +23,10 @@
     "n": 5,
     "date": "10 Ekim 2026",
     "text": "Otomatik güncelleme: uygulama açılınca ve arka plandan dönünce yeni sürümü kontrol edip kendini yeniliyor. Oyun ortasındaysan ana sayfaya dönünce yükleniyor."
+  },
+  {
+    "n": 6,
+    "date": "10 Ekim 2026",
+    "text": "Alt menü ilk açılışta da en altta: uygulama ekrana sabitlendi, kaydırma sadece içerikte."
   }
 ]
