@@ -13,11 +13,6 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<style>
-html { padding-top: env(safe-area-inset-top, 0px); box-sizing: border-box; -webkit-text-size-adjust: 100%; }
-[hidden] { display: none !important; }
-img { max-width: 100%; }
-</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap">
@@ -190,8 +185,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .me { color: inherit; }
 
 /* ---------- bottom bar ---------- */
+.screen.with-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
 .tabbar {
-  margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr);
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 460px; z-index: 10;
+  display: grid; grid-template-columns: repeat(4, 1fr);
   padding: 8px 8px calc(10px + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(180deg, rgba(10,30,52,.85), rgba(6,18,33,.98));
   border-top: 1px solid var(--glass-line); border-radius: 26px 26px 0 0;
@@ -457,10 +454,16 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; transition: none !important; } }
 @media (max-height: 700px) { .hero { padding-top: 0; } .lt { width: 48px; height: 56px; font-size: 2rem; } .gbtn { min-height: 60px; } .gbtn .ic { width: 46px; height: 46px; } .games { gap: 11px; } }
 </style>
+<style>
+html { -webkit-text-size-adjust: 100%; }
+.app { height: 100vh; height: 100dvh; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+</style>
 </head>
 <body>
 <script>window.ZELVO_SITE = true;</script>
-<script src="content.js?v=20261010133843"></script>
+<script src="content.js?v=20261010135017"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
@@ -660,7 +663,7 @@ function homeHTML() {
   const doneCount = HUB.filter(g => g.status && g.status().done).length;
   const letters = [["Z","c"],["E","y"],["L","g"],["V","b"],["O","p"]];
   return `
-  <div class="screen">
+  <div class="screen with-tabbar">
     <div class="topbar">
       <button class="round" data-act="soon" data-n="Ayarlar" aria-label="Ayarlar">${ICON.gear}</button>
       <button class="me" data-act="profile" aria-label="Profil"><div class="av" aria-hidden="true">${esc(firstName().charAt(0).toLocaleUpperCase("tr-TR"))}</div><b>${esc(firstName())}</b><span>Profil</span></button>
