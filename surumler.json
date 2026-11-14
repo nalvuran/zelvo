@@ -97,5 +97,10 @@
     "date": "14 Kasım 2026",
     "text": "Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor.",
     "public": "Arşiv geldi: kaçırdığın günlerin bulmacalarını takvimden seçip oynayabilirsin."
+  },
+  {
+    "n": 20,
+    "date": "14 Kasım 2026",
+    "text": "Ana sayfa tek ekrana sığıyor: kutular sabit boy yerine ekranda kalan yüksekliği paylaşıyor; bitirilen kutudaki sonuç etiketi artık kutuyu uzatmıyor. iPhone SE'den Pro Max'e kadar kaydırma yok."
   }
 ]
