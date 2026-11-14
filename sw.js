@@ -1,5 +1,5 @@
 /* Zelvo service worker: uygulama internetsiz de açılsın diye dosyaları önbellekte tutar */
-const VERSION = "zelvo-s16-20261010154914";
+const VERSION = "zelvo-s17-20261114143013";
 const SHELL = ["./", "./index.html", "./content.js?v=20261010154914", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {

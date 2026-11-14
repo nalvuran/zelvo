@@ -78,5 +78,10 @@
     "n": 16,
     "date": "10 Ekim 2026",
     "text": "Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle."
+  },
+  {
+    "n": 17,
+    "date": "14 Kasım 2026",
+    "text": "Ana sayfada isim ve profil yazısının logonun arkasında kalması düzeltildi; içerik ekrana sığmayınca sayfa aşağı kayıyor."
   }
 ]
