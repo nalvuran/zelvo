@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 19 | 14 Kasım 2026 | Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor. |
 | 18 | 14 Kasım 2026 | Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi. |
 | 17 | 14 Kasım 2026 | Ana sayfada isim ve profil yazısının logonun arkasında kalması düzeltildi; içerik ekrana sığmayınca sayfa aşağı kayıyor. |
 | 16 | 10 Ekim 2026 | Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle. |

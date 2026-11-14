@@ -197,6 +197,22 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--g-yellow); outl
 .chg p { margin: 4px 0 0; font-size: .88rem; line-height: 1.4; }
 .screen.login .vline { margin-top: 18px; }
 
+/* ---------- arşiv ---------- */
+.archbar { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 14px; background: rgba(246,194,62,.14); border: 1px solid rgba(246,194,62,.35); }
+.archbar span { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: .9rem; color: var(--g-yellow); }
+.archbar svg { width: 18px; height: 18px; }
+.archbar .chip { color: #fff; }
+.amonth { margin: 6px 0 18px; }
+.amh { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 0 2px 10px; }
+.agrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.awd { text-align: center; font-size: .7rem; font-weight: 800; color: var(--muted); letter-spacing: .04em; }
+.aday { aspect-ratio: 1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: var(--glass); border: 1px solid var(--glass-line); color: #fff; }
+.aday b { font-family: var(--display); font-weight: 600; font-size: 1.05rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.aday i { font-style: normal; font-size: .62rem; font-weight: 800; color: var(--muted); }
+.aday.played { background: linear-gradient(180deg, #5FD99A, #28A564); border-color: transparent; box-shadow: 0 3px 0 #18744A; }
+.aday.played i { color: #E6FFF1; }
+.aday.today { outline: 2px solid var(--g-yellow); outline-offset: 1px; }
+
 /* ---------- bottom bar ---------- */
 .screen.with-tabbar { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
 .tabbar {
@@ -583,9 +599,9 @@ img { max-width: 100%; }
 })();
 </script>
 <script>window.ZELVO_SITE = true;
-window.ZELVO_VERSION = {"n":18,"date":"14 Kasım 2026"};
-window.ZELVO_PUBLIC_CHANGES = [{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Anygram, Gizli Kelime ve Hashtag."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken seviyeni seçiyorsun; o gün hangi seviyeleri oynadığın da görünüyor."},{"n":1,"date":"10 Ekim 2026","text":"Zelvo yayında! Her gün yeni bulmacalar, her birinde Kolay, Orta ve Zor seviye."}];
-window.ZELVO_CHANGES = [{"n":18,"date":"14 Kasım 2026","text":"Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi."},{"n":17,"date":"14 Kasım 2026","text":"Ana sayfada isim ve profil yazısının logonun arkasında kalması düzeltildi; içerik ekrana sığmayınca sayfa aşağı kayıyor."},{"n":16,"date":"10 Ekim 2026","text":"Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle."},{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."},{"n":11,"date":"10 Ekim 2026","text":"Menünün altındaki şeridin rengi düzeltildi: iPhone o alanı sayfa zemininin düz rengiyle dolduruyordu, bu renk artık menüyle aynı. Teşhis satırındaki ekran ölçüsü hatası giderildi."}];</script>
+window.ZELVO_VERSION = {"n":19,"date":"14 Kasım 2026"};
+window.ZELVO_PUBLIC_CHANGES = [{"n":19,"date":"14 Kasım 2026","text":"Arşiv geldi: kaçırdığın günlerin bulmacalarını takvimden seçip oynayabilirsin."},{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Anygram, Gizli Kelime ve Hashtag."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken seviyeni seçiyorsun; o gün hangi seviyeleri oynadığın da görünüyor."},{"n":1,"date":"10 Ekim 2026","text":"Zelvo yayında! Her gün yeni bulmacalar, her birinde Kolay, Orta ve Zor seviye."}];
+window.ZELVO_CHANGES = [{"n":19,"date":"14 Kasım 2026","text":"Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor."},{"n":18,"date":"14 Kasım 2026","text":"Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi."},{"n":17,"date":"14 Kasım 2026","text":"Ana sayfada isim ve profil yazısının logonun arkasında kalması düzeltildi; içerik ekrana sığmayınca sayfa aşağı kayıyor."},{"n":16,"date":"10 Ekim 2026","text":"Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle."},{"n":15,"date":"10 Ekim 2026","text":"Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var."},{"n":14,"date":"10 Ekim 2026","text":"Bulmacaya girerken önce seviye soruluyor: Kolay, Orta ve Zor için ne değiştiği yazıyor, bugün oynadıysan durumu görünüyor. Oyun içindeki seçici yerine seviye etiketi var; dokununca seviye değişir."},{"n":13,"date":"10 Ekim 2026","text":"Tüm ikonlar Zuqio ikon setinin stiline geçti: çizgi stili, 24×24, çizgi kalınlığı 2, yuvarlak uçlar, tek renk. Bulmaca ikonları yeniden çizildi."},{"n":12,"date":"10 Ekim 2026","text":"Alt menü inceltildi: daha az yükseklik kaplıyor ve ekranın altına daha yakın duruyor."}];</script>
 <script src="content.js?v=20261010154914"></script>
 <div class="app" id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
@@ -633,9 +649,15 @@ const rawStore = {
 const getLevel = id => { const l = rawStore.get("zelvo-level-" + id, "orta"); return LVL_IDX[l] === undefined ? "orta" : l; };
 const setLevel = (id, l) => rawStore.set("zelvo-level-" + id, l);
 /* Oyun kayıtları ve istatistikleri seviyeye göre ayrı tutulur: "zelvo-avi-day" → "zelvo-avi-day-zor" */
+/* Arşiv: geçmiş bir günün bulmacaları oynanırken o günün numarası (0 = bugün) */
+let ARCHIVE = 0;
 function levelKey(k) {
   const m = /^zelvo-([a-z]+)-(day|stats)$/.exec(k) || /^(grup)-(day|stats)$/.exec(k);
-  return m ? k + "-" + getLevel(m[1]) : k;
+  if (!m) return k;
+  const base = k + "-" + getLevel(m[1]);
+  /* Arşivde: kayıt o güne ayrı tutulur, istatistik ve seri etkilenmez */
+  if (ARCHIVE) return m[2] === "day" ? base + "-a" + ARCHIVE : base + "-arsiv";
+  return base;
 }
 const store = {
   get(k, d) {
@@ -670,9 +692,9 @@ const LEVEL_DESC = {
 };
 /* Bugün o seviyede oynanmış mı: kayıt anahtarı seviyeye göre ayrı */
 function levelState(id, lvl) {
-  const key = id === "grup" ? "grup-day-" + lvl : "zelvo-" + id + "-day-" + lvl;
+  const key = (id === "grup" ? "grup-day-" + lvl : "zelvo-" + id + "-day-" + lvl) + (ARCHIVE ? "-a" + ARCHIVE : "");
   let s = rawStore.get(key, null);
-  if (!s && lvl === "orta") s = rawStore.get(id === "grup" ? "grup-day" : "zelvo-" + id + "-day", null);
+  if (!s && lvl === "orta" && !ARCHIVE) s = rawStore.get(id === "grup" ? "grup-day" : "zelvo-" + id + "-day", null);
   if (!s || s.no !== dayNo()) return "";
   if (s.over) return typeof s.elapsed === "number" && s.elapsed > 0 ? "Bitti · " + fmtTime(s.elapsed) : "Bitti";
   const started = (s.guesses && s.guesses.length) || (s.entries && s.entries.some(Boolean)) || (s.found && s.found.length) || (s.steps && s.steps.length > 1) || (s.idx > 0) || (s.log && s.log.length) || (s.vals && s.puzzle && s.vals.some((v, i) => v && !s.puzzle[i])) || (s.guess && Object.keys(s.guess).length > (s.given ? s.given.length : 0)) || s.elapsed > 0;
@@ -693,7 +715,9 @@ function showLevelPicker(id) {
 }
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-function dayNo() { const d = new Date(); return Math.max(1, Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - EPOCH) / 864e5) + 1); }
+function realDayNo() { const d = new Date(); return Math.max(1, Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - EPOCH) / 864e5) + 1); }
+function dayNo() { return ARCHIVE || realDayNo(); }
+function dayDate(no) { const t = new Date(EPOCH + (no - 1) * 864e5); return new Date(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate()); }
 const MONTHS = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
 
 /* İkon seti (Zuqio ile aynı stil): çizgi (outline) · 24×24 · çizgi kalınlığı 2 · yuvarlak uçlar ve köşeler · tek renk (currentColor).
@@ -761,7 +785,7 @@ function saveDaily() {
 /* ---------- render ---------- */
 const app = document.getElementById("app");
 function render() {
-  const views = { boot: bootHTML, login: loginHTML, home: homeHTML, parola: parolaHTML, mini: miniHTML, sudoku: sudokuHTML, avi: wsHTML, kripto: kHTML, merdiven: lHTML, anagram: anHTML, hedef: hHTML, turet: tuHTML, sozluk: szHTML, takas: tkHTML };
+  const views = { boot: bootHTML, login: loginHTML, home: homeHTML, archive: archiveHTML, parola: parolaHTML, mini: miniHTML, sudoku: sudokuHTML, avi: wsHTML, kripto: kHTML, merdiven: lHTML, anagram: anHTML, hedef: hHTML, turet: tuHTML, sozluk: szHTML, takas: tkHTML };
   app.innerHTML = (views[screen] || gameHTML)();
   bind();
   if (screen === "avi") wsBindDrag();
@@ -787,7 +811,7 @@ function loginHTML() {
 /* Sürüm numarası: her güncellemede bir artar (sitede derleme sırasında yazılır) */
 const APP_VERSION = window.ZELVO_VERSION || null;
 /* Teknik notları sadece yönetici görür (Firebase hesap kimliğiyle); oyunculara duyurular gösterilir */
-const ADMIN_UIDS = [];
+const ADMIN_UIDS = ["0LgVCYPupDfy4Yb2MrPqATCJnI02"];
 const isAdmin = () => !SITE || !!(USER && ADMIN_UIDS.includes(USER.uid));
 const changeList = () => isAdmin() ? (window.ZELVO_CHANGES || []) : (window.ZELVO_PUBLIC_CHANGES || []);
 function versionLine() { return APP_VERSION ? `Zelvo · Sürüm ${APP_VERSION.n} · ${APP_VERSION.date}` : "Zelvo · Prototip"; }
@@ -824,7 +848,7 @@ function showProfile() {
 }
 /* Yeni sürüm: ana sayfadayken hemen yenilenir; oyun ortasındaysa ana sayfaya dönünce yenilenir */
 let UPDATE_RELOAD = null;
-window.zelvoCanReload = () => (screen === "home" || screen === "login" || screen === "boot") && overlay.hidden;
+window.zelvoCanReload = () => !ARCHIVE && (screen === "home" || screen === "archive" || screen === "login" || screen === "boot") && overlay.hidden;
 window.zelvoUpdateReady = (n, reload) => { UPDATE_RELOAD = reload; toast("Sürüm " + n + " hazır; ana sayfaya dönünce yüklenecek", 3500); };
 window.zelvoOnAuth = user => {
   USER = user;
@@ -839,11 +863,11 @@ window.zelvoAuthError = code => {
 if (SITE) setTimeout(() => { if (screen === "boot") { screen = "login"; render(); } }, 8000);
 
 /* Ortak seri: herhangi bir günlük bulmaca bitirilen her gün sayılır */
-function markDay(no) { const d = store.get("zelvo-days", []); if (!d.includes(no)) { d.push(no); store.set("zelvo-days", d.slice(-400)); } }
-function streakDays() { const d = store.get("zelvo-days", []); let n = dayNo(), s = 0; if (!d.includes(n)) n--; while (d.includes(n)) { s++; n--; } return s; }
+function markDay(no) { if (ARCHIVE) return; const d = store.get("zelvo-days", []); if (!d.includes(no)) { d.push(no); store.set("zelvo-days", d.slice(-400)); } }
+function streakDays() { const d = store.get("zelvo-days", []); let n = realDayNo(), s = 0; if (!d.includes(n)) n--; while (d.includes(n)) { s++; n--; } return s; }
 
 function homeHTML() {
-  const d = new Date();
+  const d = ARCHIVE ? dayDate(ARCHIVE) : new Date();
   const daily = store.get("grup-day", null);
   const doneGrup = daily && daily.no === dayNo() && daily.over;
   const grupStatus = doneGrup ? (daily.won ? "Çözüldü" : "Bitti") : LVL_NAME[getLevel("grup")];
@@ -884,7 +908,8 @@ function homeHTML() {
       <div class="logo" role="img" aria-label="Zelvo">${letters.map(l => `<span class="lt ${l[1]}" aria-hidden="true">${l[0]}</span>`).join("")}</div>
     </div>
     <div class="progress">
-      <div class="ptop"><h2>Bugünün bulmacaları</h2><span>${d.getDate()} ${MONTHS[d.getMonth()]}</span></div>
+      ${ARCHIVE ? `<div class="archbar"><span>${ICON.cal}Arşiv · ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}</span><button class="chip" data-act="today">Bugüne dön</button></div>` : ""}
+      <div class="ptop"><h2>${ARCHIVE ? "O günün bulmacaları" : "Bugünün bulmacaları"}</h2><span>${d.getDate()} ${MONTHS[d.getMonth()]}</span></div>
       <div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="${liveCount}" aria-valuenow="${doneCount}" aria-label="Bugün tamamlanan bulmacalar"><i style="width:${doneCount / liveCount * 100}%"></i></div>
       <span class="pnum">${doneCount} / ${liveCount} tamam</span>
     </div>
@@ -902,8 +927,56 @@ function homeHTML() {
     <div class="spacer"></div>
   </div>
   <nav class="tabbar" aria-label="Ana menü">
-    <button class="tab on" aria-current="page">${ICON.home}ANA SAYFA</button>
-    <button class="tab" data-act="soon" data-n="Arşiv">${ICON.cal}ARŞİV</button>
+    <button class="tab${ARCHIVE ? "" : " on"}" data-act="today" ${ARCHIVE ? "" : 'aria-current="page"'}>${ICON.home}ANA SAYFA</button>
+    <button class="tab${ARCHIVE ? " on" : ""}" data-act="archive" ${ARCHIVE ? 'aria-current="page"' : ""}>${ICON.cal}ARŞİV</button>
+    <button class="tab" data-act="stats">${ICON.chart}İSTATİSTİK</button>
+    <button class="tab" data-act="profile">${ICON.user}PROFİL</button>
+  </nav>`;
+}
+
+/* ---------- arşiv takvimi ---------- */
+function archiveDone() {
+  const done = {};
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i), m = /-a(\d+)$/.exec(k || "");
+      if (!m) continue;
+      const v = JSON.parse(localStorage.getItem(k));
+      if (v && v.over) done[m[1]] = (done[m[1]] || 0) + 1;
+    }
+  } catch (e) {}
+  return done;
+}
+function archiveHTML() {
+  const today = realDayNo(), done = archiveDone(), months = [];
+  for (let n = 1; n <= today; n++) {
+    const dt = dayDate(n), key = dt.getFullYear() + "-" + dt.getMonth();
+    let m = months.find(x => x.key === key);
+    if (!m) { m = { key, y: dt.getFullYear(), mo: dt.getMonth(), days: [] }; months.push(m); }
+    m.days.push({ n, d: dt.getDate(), wd: (dt.getDay() + 6) % 7 });
+  }
+  months.reverse();
+  const head = ["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"].map(x => `<span class="awd">${x}</span>`).join("");
+  return `
+  <div class="screen with-tabbar">
+    <div class="ghead">
+      <span style="width:46px"></span>
+      <h1>Arşiv</h1>
+      <span style="width:46px"></span>
+    </div>
+    <p class="sub">Geçmiş bir güne dokun, o günün bulmacalarını oyna. Arşivdeki oyunlar seriyi ve istatistikleri etkilemez.</p>
+    ${months.map(m => `<div class="amonth">
+      <div class="amh">${MONTHS[m.mo]} ${m.y}</div>
+      <div class="agrid">${head}${m.days[0].wd ? `<span style="grid-column: span ${m.days[0].wd}"></span>` : ""}${m.days.map(x => {
+        const isToday = x.n === today, c = done[x.n] || 0;
+        return `<button class="aday${isToday ? " today" : ""}${c ? " played" : ""}" data-act="archday" data-n="${x.n}" aria-label="${x.d} ${MONTHS[m.mo]}${isToday ? ", bugün" : ""}${c ? ", " + c + " bulmaca bitti" : ""}"><b>${x.d}</b>${c ? `<i>${c}</i>` : isToday ? `<i>bugün</i>` : ""}</button>`;
+      }).join("")}</div>
+    </div>`).join("")}
+    <div class="spacer"></div>
+  </div>
+  <nav class="tabbar" aria-label="Ana menü">
+    <button class="tab" data-act="today">${ICON.home}ANA SAYFA</button>
+    <button class="tab on" aria-current="page">${ICON.cal}ARŞİV</button>
     <button class="tab" data-act="stats">${ICON.chart}İSTATİSTİK</button>
     <button class="tab" data-act="profile">${ICON.user}PROFİL</button>
   </nav>`;
@@ -1011,6 +1084,9 @@ function act(a, el) {
   if (a === "play") { G = loadDaily(); screen = "game"; render(); if (!store.get("grup-seen", false)) { store.set("grup-seen", true); showHelp(); } else if (G.over) showResult(); return; }
   if (a === "free") { G = newGame("free"); screen = "game"; render(); return; }
   if (a === "home") { if (UPDATE_RELOAD) return UPDATE_RELOAD(); screen = "home"; render(); return; }
+  if (a === "today") { if (UPDATE_RELOAD) return UPDATE_RELOAD(); ARCHIVE = 0; screen = "home"; render(); return; }
+  if (a === "archive") { screen = "archive"; render(); return; }
+  if (a === "archday") { const n = +el.dataset.n; ARCHIVE = n === realDayNo() ? 0 : n; screen = "home"; render(); return; }
   if (a === "help") return showHelp();
   if (a === "stats") return showStats();
   if (a === "result") return showResult();

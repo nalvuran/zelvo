@@ -91,5 +91,11 @@
     "n": 18,
     "date": "14 Kasım 2026",
     "text": "Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi."
+  },
+  {
+    "n": 19,
+    "date": "14 Kasım 2026",
+    "text": "Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor.",
+    "public": "Arşiv geldi: kaçırdığın günlerin bulmacalarını takvimden seçip oynayabilirsin."
   }
 ]
