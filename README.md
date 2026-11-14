@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 18 | 14 Kasım 2026 | Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi. |
 | 17 | 14 Kasım 2026 | Ana sayfada isim ve profil yazısının logonun arkasında kalması düzeltildi; içerik ekrana sığmayınca sayfa aşağı kayıyor. |
 | 16 | 10 Ekim 2026 | Bulmaca isimleri Everyday Puzzles ile aynı yapıldı: Anygram, Gizli Kelime, Hashtag, Kelime Arama, Mini Çapraz Bulmaca, Tangle. |
 | 15 | 10 Ekim 2026 | Üç yeni bulmaca: Türet (harflerden kelime türet, bonus kelimeler), Sözlük (gizli kelimenin sözlükteki yerini daralt) ve Takas (harflerin yerini değiştirerek 6 kelimeyi tamamla). Hepsinde Kolay/Orta/Zor var. |
