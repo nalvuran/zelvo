@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 21 | 14 Kasım 2026 | Sudoku'da tamamen boş bir satır daralıyordu; artık tüm ızgaralarda (Sudoku, Mini Çapraz Bulmaca, Kelime Arama, Hashtag) satırlar eşit yükseklikte. |
 | 20 | 14 Kasım 2026 | Ana sayfa tek ekrana sığıyor: kutular sabit boy yerine ekranda kalan yüksekliği paylaşıyor; bitirilen kutudaki sonuç etiketi artık kutuyu uzatmıyor. iPhone SE'den Pro Max'e kadar kaydırma yok. |
 | 19 | 14 Kasım 2026 | Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor. |
 | 18 | 14 Kasım 2026 | Ayarlar'daki teknik değişiklik notları sadece yöneticiye görünüyor; oyunculara sadece yeni bulmaca ve özellik duyuruları gösteriliyor. Profilde hesap kimliği görünüyor. tools/surum.py yayın betiği eklendi. |

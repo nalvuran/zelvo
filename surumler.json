@@ -102,5 +102,10 @@
     "n": 20,
     "date": "14 Kasım 2026",
     "text": "Ana sayfa tek ekrana sığıyor: kutular sabit boy yerine ekranda kalan yüksekliği paylaşıyor; bitirilen kutudaki sonuç etiketi artık kutuyu uzatmıyor. iPhone SE'den Pro Max'e kadar kaydırma yok."
+  },
+  {
+    "n": 21,
+    "date": "14 Kasım 2026",
+    "text": "Sudoku'da tamamen boş bir satır daralıyordu; artık tüm ızgaralarda (Sudoku, Mini Çapraz Bulmaca, Kelime Arama, Hashtag) satırlar eşit yükseklikte."
   }
 ]
