@@ -24,6 +24,7 @@ Uygulamadaki sürüm numarası `surumler.json` dosyasındaki son kayıttır.
 
 | Sürüm | Tarih | Değişiklik |
 | --- | --- | --- |
+| 22 | 14 Kasım 2026 | Başlık ve harf yazı tipi Fredoka'dan Baloo 2'ye geçti: Fredoka'da Ğ, ğ, İ, Ş, ş harfleri olmadığı için yedek yazı tipiyle farklı görünüyordu. Tüm bulmacalarda, klavyede ve logoda Türkçe harfler artık aynı tarzda. |
 | 21 | 14 Kasım 2026 | Sudoku'da tamamen boş bir satır daralıyordu; artık tüm ızgaralarda (Sudoku, Mini Çapraz Bulmaca, Kelime Arama, Hashtag) satırlar eşit yükseklikte. |
 | 20 | 14 Kasım 2026 | Ana sayfa tek ekrana sığıyor: kutular sabit boy yerine ekranda kalan yüksekliği paylaşıyor; bitirilen kutudaki sonuç etiketi artık kutuyu uzatmıyor. iPhone SE'den Pro Max'e kadar kaydırma yok. |
 | 19 | 14 Kasım 2026 | Arşiv eklendi: takvimden geçmiş bir güne dokununca o günün bulmacaları açılıyor. Arşiv oyunları ayrı kaydediliyor, seri ve istatistikleri etkilemiyor. Takvimde bitirilen bulmaca sayısı görünüyor. |

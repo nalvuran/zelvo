@@ -107,5 +107,10 @@
     "n": 21,
     "date": "14 Kasım 2026",
     "text": "Sudoku'da tamamen boş bir satır daralıyordu; artık tüm ızgaralarda (Sudoku, Mini Çapraz Bulmaca, Kelime Arama, Hashtag) satırlar eşit yükseklikte."
+  },
+  {
+    "n": 22,
+    "date": "14 Kasım 2026",
+    "text": "Başlık ve harf yazı tipi Fredoka'dan Baloo 2'ye geçti: Fredoka'da Ğ, ğ, İ, Ş, ş harfleri olmadığı için yedek yazı tipiyle farklı görünüyordu. Tüm bulmacalarda, klavyede ve logoda Türkçe harfler artık aynı tarzda."
   }
 ]
